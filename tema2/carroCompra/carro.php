@@ -15,7 +15,7 @@
       $carro = array(
 
         array("nombre" => "AMD Ryzen 7 5800X", "precio" => 325, "cantidad" => 1,
-                    "img" => "./img/productos/pr1.png", "ivaR" => 0),
+                    "img" => ".\img\productos\pr1.png", "ivaR" => 0),
         array("nombre" => "Logitech 350", "precio" => 50, "cantidad" => 10,
                     "img" => "./img/productos/pr2.webp", "ivaR" => 1),
         array("nombre" => "Monitor AOC 32' OLED", "precio" => 610, "cantidad" => 1,
