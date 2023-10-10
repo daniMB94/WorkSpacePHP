@@ -9,6 +9,7 @@
         <title>Dashboard - SB Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
+        <link rel="icon" href="./img/iconoWebProyectos.png" sizes="32x32" type="image/png">
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
 <body class="sb-nav-fixed">
@@ -38,7 +39,7 @@
                 </li>
             </ul>
         </nav>
-
+        <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
