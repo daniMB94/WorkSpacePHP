@@ -15,17 +15,17 @@
       $carro = array(
 
         array("nombre" => "AMD Ryzen 7 5800X", "precio" => 325, "cantidad" => 1,
-                    "img" => "./img/productos/pr1.png", "ivaR" => 0),
+                    "img" => "./img/productos/pr3.png", "ivaR" => 0),
         array("nombre" => "Logitech 350", "precio" => 50, "cantidad" => 10,
-                    "img" => "./img/productos/pr2.webp", "ivaR" => 1),
+                    "img" => "./img/productos/pr2.jpg", "ivaR" => 1),
         array("nombre" => "Monitor AOC 32' OLED", "precio" => 610, "cantidad" => 1,
-                    "img" => "./img/productos/pr3.webp", "ivaR" => 0),
+                    "img" => "./img/productos/pr4.jpg", "ivaR" => 0),
         array("nombre" => "Teclado Ducky español", "precio" => 120, "cantidad" => 2,
-                    "img" => "./img/productos/pr1.webp", "ivaR" => 1),
+                    "img" => "./img/productos/pr4.jpg", "ivaR" => 1),
         array("nombre" => "Nvidia GTX 4090", "precio" => 2000, "cantidad" => 1,
-                    "img" => "./img/productos/pr1.webp", "ivaR" => 1),
+                    "img" => "./img/productos/pr2.jpg", "ivaR" => 1),
         array("nombre" => "SSD Samsung 980 Pro 2TB", "precio" => 170, "cantidad" => 2,
-                    "img" => "./img/productos/pr1.webp", "ivaR" => 0),
+                    "img" => "./img/productos/pr3.png", "ivaR" => 0),
 
       );
 

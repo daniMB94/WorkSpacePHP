@@ -13,9 +13,9 @@
 
     <!-- Favicons -->
 
-<link rel="icon" href="./img/iconotienda.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="./img/iconotienda.png" sizes="32x32" type="image/png">
 
-<meta name="theme-color" content="#7952b3">
+    <meta name="theme-color" content="#7952b3">
 
 
     <style>
