@@ -42,6 +42,8 @@
       "categoria" => "sci-fi", "editorial" => "Editorial B", "img" => "./img/cr10.jfif", "precio" => 100),
       array("isbn" => "0183js653", "titulo" => "Titulo 21", "descripcion" => "Descripcion 21",
       "categoria" => "sci-fi", "editorial" => "Editorial C", "img" => "./img/cr1.jfif", "precio" => 100),
-      )
+    );
 
-    ?>
+    $categorias = array_unique(array_column($libros, 'categoria'));
+
+?>

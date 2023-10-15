@@ -71,57 +71,44 @@ include "cabecera.php"
 </div>
 <hr>
 <main>
+  <!-- Se imprimen los libros -->
+  <?php
 
-<?php
+  include "libros.php";
 
-include "libros.php";
+  function imprimir($linea)
+  {
 
-if (!isset($_SESSION['catalogo']))
-        $_SESSION['catalogo'] = $libros;
-     
-    echo '<div class="row">';
 
-    foreach($_SESSION['catalogo'] as $linea) {
-        echo '<div class="col">';
-        echo '
-                <div class="card mb-3 card text-center" style="width: 18rem;">
-                    <img src="'.$linea["img"].'" class="card-img-top" alt="..." style="width: 100px; height: 150px; margin: 0 auto">
+    echo '
+                <div class="card mb-4 card text-center" style="width: 18rem;">
+                    <img src="' . $linea["img"] . '" class="card-img-top" alt="..." style="width: 100px; height: 150px; margin: 0 auto">
                     <div class="card-body">
-                        <h4 class="card-title">'.$linea["titulo"].'</h6>
-                        <p class="card-text">'.$linea["precio"].' €</p>
+                        <h4 class="card-title">' . $linea["titulo"] . '</h6>
+                        <p class="card-text">' . $linea["precio"] . ' €</p>
 
                     </div>
                 </div>
         ';
+  }
 
-        echo '</div>';
+
+  echo '<div class="row" style="display: flex; justify-content: space-between; margin: auto 15px auto 15px">';
+  foreach ($categorias as $categoria) {
+
+    echo '<h1>' . $categoria . '</h1>';
+    foreach ($libros as $libro) {
+      if ($libro['categoria'] == $categoria) {
+        imprimir($libro);
+      }
     }
+  }
+  echo '</div>';
 
-?>
 
-<!--
-  <section>
-    <h1><span class="text-muted">ciencas</span></h1>
-  </section>
-  <section>
-    <h1><span class="text-muted">cocina</span></h1>
-  </section>
-  <section>
-    <h1><span class="text-muted">deporte</span></h1>
-  </section>
-  <section>
-    <h1><span class="text-muted">novela negra</span></h1>
-  </section>
-  <section>
-    <h1><span class="text-muted">novela romantica</span></h1>
-  </section>
-  <section>
-    <h1><span class="text-muted">historia</span></h1>
-  </section>
-  <section>
-    <h1><span class="text-muted">sci-fi</span></h1>
-  </section>
--->
+  ?>
+
+
 
 </main>
 
