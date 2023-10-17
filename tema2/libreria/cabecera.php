@@ -40,13 +40,13 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-primary-emphasis" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Categorias</a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">ciencias</a></li>
-                    <li><a class="dropdown-item" href="#">cocina</a></li>
-                    <li><a class="dropdown-item" href="#">deporte</a></li>
-                    <li><a class="dropdown-item" href="#">novela negra</a></li>
-                    <li><a class="dropdown-item" href="#">novela romántica</a></li>
-                    <li><a class="dropdown-item" href="#">historia</a></li>
-                    <li><a class="dropdown-item" href="#">sci-fi</a></li>
+                    <li><a class="dropdown-item" href="#ciencias">ciencias</a></li>
+                    <li><a class="dropdown-item" href="#cocina">cocina</a></li>
+                    <li><a class="dropdown-item" href="#deporte">deporte</a></li>
+                    <li><a class="dropdown-item" href="#novela negra">novela negra</a></li>
+                    <li><a class="dropdown-item" href="#novela romántica">novela romántica</a></li>
+                    <li><a class="dropdown-item" href="#historia">historia</a></li>
+                    <li><a class="dropdown-item" href="#sci-fi">sci-fi</a></li>
                 </ul>
             </li>
             <li class="nav-item">

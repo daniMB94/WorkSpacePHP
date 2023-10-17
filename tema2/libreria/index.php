@@ -96,7 +96,7 @@ include "cabecera.php"
   echo '<div class="row" style="display: flex; justify-content: space-between; margin: auto 15px auto 15px">';
   foreach ($categorias as $categoria) {
 
-    echo '<h1>' . $categoria . '</h1>';
+    echo '<h1 id="'.$categoria.'">' . $categoria . '</h1>';
     foreach ($libros as $libro) {
       if ($libro['categoria'] == $categoria) {
         imprimir($libro);
