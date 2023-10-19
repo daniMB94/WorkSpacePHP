@@ -2,7 +2,7 @@
 
     $dbh = null;
 
-    define('DB_NAME', 'php');
+    define('DB_NAME', 'servidor');
     define('DB_USER', 'root');
     define('DB_PASSWORD', 'toor');
     define('DB_HOST', '172.17.0.2:3306'); //La IP del contenedor Mysql, y el puerto interno del contenedor
