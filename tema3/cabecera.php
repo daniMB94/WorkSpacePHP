@@ -37,29 +37,24 @@ session_start();
         <!-- Navbar-->
         <!-- PHP -->
         <?php
-        if (isset($_SESSION['usuario'])) {
-            echo "<p class='text-primary me-2'>" . $_SESSION['usuario']['email'] . "</p>";
-        } else {
+        if (!isset($_SESSION['usuario']))
+            echo "<a href='./login.php'><button class='btn btn-primary' type='submit'>Login</button></a>";
+
 
         ?>
-            <a href="./login.php"><button class="btn btn-primary" type="submit">Login</button></a>
-
-        <?php
-        }
-        ?>
+        
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
+                    
                     <!-- PHP -->
                     <?php
 
                     if(isset($_SESSION['usuario']))
+                        echo "<li><hr class='dropdown-divider' /></li>";
                         echo "<li><a class='dropdown-item' href='controlador.php?accion=cerrarSesion'>Logout</a></li>";
                     
                     ?>
@@ -116,7 +111,11 @@ session_start();
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
+                    <?php
+                    if(isset($_SESSION['usuario']))
+                        echo "<div class='small'>Logged in as:<p class='text-primary me-2'>". $_SESSION['usuario']['email'] . "</p></div>";
+                    ?>
+                    
                     Start Bootstrap
                 </div>
             </nav>
