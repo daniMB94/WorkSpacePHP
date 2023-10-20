@@ -56,7 +56,14 @@ session_start();
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <!-- PHP -->
+                    <?php
+
+                    if(isset($_SESSION['usuario']))
+                        echo "<li><a class='dropdown-item' href='controlador.php?accion=cerrarSesion'>Logout</a></li>";
+                    
+                    ?>
+                    
                 </ul>
             </li>
         </ul>
