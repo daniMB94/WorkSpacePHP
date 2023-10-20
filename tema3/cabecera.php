@@ -37,29 +37,24 @@ session_start();
         <!-- Navbar-->
         <!-- PHP -->
         <?php
-        if (isset($_SESSION['usuario'])) {
-            echo "<p class='text-primary me-2'>" . $_SESSION['usuario']['email'] . "</p>";
-        } else {
+        if (!isset($_SESSION['usuario']))
+            echo "<a href='./login.php'><button class='btn btn-primary' type='submit'>Login</button></a>";
+
 
         ?>
-            <a href="./login.php"><button class="btn btn-primary" type="submit">Login</button></a>
-
-        <?php
-        }
-        ?>
+        
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
+                    
                     <!-- PHP -->
                     <?php
 
                     if(isset($_SESSION['usuario']))
+                        echo "<li><hr class='dropdown-divider' /></li>";
                         echo "<li><a class='dropdown-item' href='controlador.php?accion=cerrarSesion'>Logout</a></li>";
                     
                     ?>
@@ -73,15 +68,11 @@ session_start();
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Proyectos</div>
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </a>
+                        
                         <div class="sb-sidenav-menu-heading">Acciones</div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Layouts
+                            Proyectos
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
@@ -90,25 +81,7 @@ session_start();
                                 <a class="nav-link" href="layout-sidenav-light.html">Eliminar proyecto</a>
                             </nav>
                         </div>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                    Authentication
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="login.html">Login</a>
-                                        <a class="nav-link" href="register.html">Register</a>
-                                        <a class="nav-link" href="password.html">Forgot Password</a>
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                    Error
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                            </nav>
-                        </div>
+                       
                         <a class="nav-link" href="tables.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Tables
@@ -116,7 +89,11 @@ session_start();
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
+                    <?php
+                    if(isset($_SESSION['usuario']))
+                        echo "<div class='small'>Logged in as:<p class='text-primary me-2'>". $_SESSION['usuario']['email'] . "</p></div>";
+                    ?>
+                    
                     Start Bootstrap
                 </div>
             </nav>
