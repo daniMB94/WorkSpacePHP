@@ -77,8 +77,9 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Añadir proyecto</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Eliminar proyecto</a>
+                                <a class="nav-link" href="#">Añadir proyecto</a>
+
+                                <a class="nav-link" href="#">Eliminar proyecto</a>
                             </nav>
                         </div>
 
