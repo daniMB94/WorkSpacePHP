@@ -81,11 +81,7 @@ session_start();
                                 <a class="nav-link" href="layout-sidenav-light.html">Eliminar proyecto</a>
                             </nav>
                         </div>
-                       
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tablas
-                        </a>
+
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
