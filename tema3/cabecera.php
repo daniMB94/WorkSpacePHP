@@ -42,23 +42,23 @@ session_start();
 
 
         ?>
-        
+
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                    
+
                     <!-- PHP -->
                     <?php
 
-                    if(isset($_SESSION['usuario']))
+                    if (isset($_SESSION['usuario']))
                         echo "<li><hr class='dropdown-divider' /></li>";
-                        echo "<li><a class='dropdown-item' href='controlador.php?accion=cerrarSesion'>Logout</a></li>";
-                    
+                    echo "<li><a class='dropdown-item' href='controlador.php?accion=cerrarSesion'>Logout</a></li>";
+
                     ?>
-                    
+
                 </ul>
             </li>
         </ul>
@@ -68,29 +68,43 @@ session_start();
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        
+
                         <div class="sb-sidenav-menu-heading">Acciones</div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsProyectos" aria-expanded="false" aria-controls="collapseLayoutsProyectos">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Proyectos
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseLayoutsProyectos" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">Añadir proyecto</a>
-
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsAnadirProyecto" aria-expanded="false" aria-controls="collapseLayoutsAnadirProyecto">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                    Añadir Proyecto
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="collapseLayoutsAnadirProyecto" data-bs-parent="#collapseLayoutsProyectos">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <form action="">
+                                            <input type="text">
+                                            <input type="date">
+                                            <input type="number">
+                                        </form>
+                                    </nav>
+                                </div>
                                 <a class="nav-link" href="#">Eliminar proyecto</a>
                             </nav>
                         </div>
+
+
 
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
                     <?php
-                    if(isset($_SESSION['usuario']))
-                        echo "<div class='small'>Logged in as:<p class='text-primary me-2'>". $_SESSION['usuario']['email'] . "</p></div>";
+                    if (isset($_SESSION['usuario']))
+                        echo "<div class='small'>Logged in as:<p class='text-primary me-2'>" . $_SESSION['usuario']['email'] . "</p></div>";
                     ?>
-                    
+
                     Start Bootstrap
                 </div>
             </nav>

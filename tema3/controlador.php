@@ -21,6 +21,13 @@ if (isset($_GET['accion'])) {
         header("Location: index.php");
         die();
     }
+
+
+    if(strcmp($_GET['accion'], "addProyecto") == 0) {
+        array_push($_SESSION['proyectos'], $nuevoProyecto);
+        
+    }
+    header("Location: index.php");
 }
 
 
