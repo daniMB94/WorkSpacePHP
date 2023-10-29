@@ -105,7 +105,7 @@
                     //Crear la variable del carro en la sesión
                     $_SESSION['carro'] = array();
 
-                } 
+                }
 
                 //Buscar el producto con el id del producto que se ha comprado
                 $producto = buscarProducto($idProducto);
