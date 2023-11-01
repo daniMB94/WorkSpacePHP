@@ -71,13 +71,15 @@ include "cabecera.php";
     
 ';
             }
-            echo '</tbody>';
-            echo '</table>';
+            
 
             
         } else {
             echo "<div class='callout-danger bg-danger'><strong>Acceso denegado.</strong> Se necesita estar loggeado</div>";
+            
         }
+            echo '</tbody>';
+            echo '</table>';
         ?>
                     
                     <?php

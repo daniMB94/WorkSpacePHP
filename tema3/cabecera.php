@@ -100,6 +100,7 @@ session_start();
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
+                    <!-- PHP -->
                     <?php
                     if (isset($_SESSION['usuario']))
                         echo "<div class='small'>Logged in as:<p class='text-primary me-2'>" . $_SESSION['usuario']['email'] . "</p></div>";
