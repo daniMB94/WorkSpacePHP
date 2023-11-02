@@ -56,7 +56,7 @@
         <div class="col-lg-6 mx-auto">
         <p class="lead mb-4">Aquí vamos a mostrar nuestros resultados en la liga DeepRacer</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Mi liga</button>
+            <a href="index.php?accion=visualizar"><button type="button" class="btn btn-primary btn-lg px-4 gap-3">Mi liga</button></a>
         </div>
         </div>
     </div>
