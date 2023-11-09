@@ -36,8 +36,9 @@
 
             echo "</tbody>
             </table>";
-
+            echo "<a href='index.php?accion=insertarResultado'><button type='submit' class='btn btn-primary'>Nuevo Resultado</button></a>";
             echo "</div>";
+           
 
             include "piePrincipal.php";
 

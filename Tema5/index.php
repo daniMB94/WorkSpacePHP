@@ -21,18 +21,32 @@ if (isset($_REQUEST)) {
             ControladorDeepRacer::visualizar();
 
         }
-    } else {
-        //Mostrar inicio
-        ControladorDeepRacer::mostrarInicio();
-    }
-
-    if (isset($_REQUEST["accion"])) {
         if (strcmp($_REQUEST["accion"], "eliminarResultado") == 0) {
 
             $id = $_REQUEST["id"];
             ControladorDeepRacer::eliminarResultado($id);
         }
+
+        if (strcmp($_REQUEST["accion"], "insertarResultado") == 0) {
+
+            ControladorDeepRacer::visualizarFormInserccion();
+
+        }
+
+        if (strcmp($_REQUEST["accion"], "recibirFormNuevoResultado") == 0) {
+            $modelo = $_REQUEST["modelo"];
+            $pista = $_REQUEST["pista"];
+            $tiempoVuelta = $_REQUEST["tiempoVuelta"];
+            $numeroColisiones = $_REQUEST["numeroColisiones"];
+            ControladorDeepRacer::recibirFormularioNuevoResultado($modelo, $pista, $tiempoVuelta, $numeroColisiones);
+        }
+
+
+    } else {
+        //Mostrar inicio
+        ControladorDeepRacer::mostrarInicio();
     }
+
 }
 
 

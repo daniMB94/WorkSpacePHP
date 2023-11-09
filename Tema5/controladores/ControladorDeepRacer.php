@@ -4,6 +4,8 @@
     use DeepRacer\vistas\VistaInicio;
     use DeepRacer\modelos\ModeloResultados;
     use DeepRacer\vistas\VistaResultados;
+    use DeepRacer\vistas\VistaFormInsertar;
+    use DeepRacer\modelos\Resultado;
 
     class ControladorDeepRacer {
 
@@ -26,6 +28,22 @@
 
         public static function eliminarResultado($id){
             ModeloResultados::eliminarResultado($id);
+
+            $resultado = ModeloResultados::visualizar();
+
+            VistaResultados::render($resultado);
+
+        }
+
+        public static function visualizarFormInserccion() {
+            VistaFormInsertar::render();
+
+        }
+
+        public static function recibirFormularioNuevoResultado($modelo, $pista, $tiempoVuelta, $numeroColisiones) {
+            $resultado = new Resultado(modelo:$modelo, pista:$pista, tiempoVuelta:$tiempoVuelta, numeroColisiones:$numeroColisiones);
+
+            ModeloResultados::insertarResultado($resultado);
 
             $resultado = ModeloResultados::visualizar();
 
