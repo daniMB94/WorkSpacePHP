@@ -25,6 +25,14 @@ if (isset($_REQUEST)) {
         //Mostrar inicio
         ControladorDeepRacer::mostrarInicio();
     }
+
+    if (isset($_REQUEST["accion"])) {
+        if (strcmp($_REQUEST["accion"], "eliminarResultado") == 0) {
+
+            $id = $_REQUEST["id"];
+            ControladorDeepRacer::eliminarResultado($id);
+        }
+    }
 }
 
 

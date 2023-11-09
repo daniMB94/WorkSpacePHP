@@ -24,6 +24,15 @@
 
         }
 
+        public static function eliminarResultado($id){
+            ModeloResultados::eliminarResultado($id);
+
+            $resultado = ModeloResultados::visualizar();
+
+            VistaResultados::render($resultado);
+
+        }
+
     }
 
 

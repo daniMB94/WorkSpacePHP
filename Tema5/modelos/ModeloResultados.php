@@ -1,26 +1,42 @@
 <?php
-    namespace DeepRacer\modelos;
-    use DeepRacer\modelos\ConexionBaseDeDatos;
-    use PDO;
+namespace DeepRacer\modelos;
 
-    class modeloResultados {
+use DeepRacer\modelos\ConexionBaseDeDatos;
+use PDO;
 
-        public static function visualizar() {
+class modeloResultados
+{
+
+    public static function visualizar()
+    {
 
 
-            $conexionObject = new ConexionBaseDeDatos();
-            $conexion = $conexionObject->getConexion();
+        $conexionObject = new ConexionBaseDeDatos();
+        $conexion = $conexionObject->getConexion();
 
-            $consulta = $conexion->prepare("SELECT * FROM resultados");
-            $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'DeepRacer\modelos\Resultado'); //Nombre de la clase
-            $consulta->execute();           
-    
-            $resultados = $consulta->fetchAll();
+        $consulta = $conexion->prepare("SELECT * FROM resultados");
+        $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'DeepRacer\modelos\Resultado'); //Nombre de la clase
+        $consulta->execute();
 
-            $conexionObject->cerrarConexion();
+        $resultados = $consulta->fetchAll();
 
-            return $resultados;
+        $conexionObject->cerrarConexion();
 
+        return $resultados;
+
+
+    }
+
+    public static function eliminarResultado($id)
+    {
+        $conexionObject = new ConexionBaseDeDatos();
+        $conexion = $conexionObject->getConexion();
+
+        $consulta = $conexion->prepare("DELETE FROM resultados WHERE id = :id");
+        $consulta->bindValue(":id", $id);
+        $consulta->execute();
+
+        $conexionObject->cerrarConexion();
 
     }
 }
