@@ -9,7 +9,7 @@
             
             echo "<div class='container'>";
             echo "
-            
+
             <table class='table table-dark'>
                 <thead>
                     <tr>
