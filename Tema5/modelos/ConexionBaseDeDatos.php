@@ -10,7 +10,7 @@ class ConexionBaseDeDatos {
 
     public function __construct() {
     
-        $host = '172.17.0.3:3306'; //La IP del contenedor Mysql, y el puerto interno del contenedor
+        $host = '172.17.0.2:3306'; //La IP del contenedor Mysql, y el puerto interno del contenedor
     
             try {
                 if ($this->conexion == null) {
