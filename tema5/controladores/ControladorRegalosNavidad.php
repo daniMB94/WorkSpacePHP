@@ -3,11 +3,15 @@
 namespace regalosNavidad\controladores;
 
 use regalosNavidad\vistas\VistaInicio;
+use regalosNavidad\modelos\ModeloRegalos;
 
-class ControladorRegalosNavidad {
+class ControladorRegalosNavidad
+{
 
-    public static function mostrarInicio() {
+    public static function mostrarInicio()
+    {
         VistaInicio::render();
+
     }
 
 }
