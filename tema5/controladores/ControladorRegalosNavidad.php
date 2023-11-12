@@ -22,12 +22,10 @@ class ControladorRegalosNavidad
         VistaConfirmacionRegistro::render();
     }
 
-    public static function registroUsuarioBBDD($nombre, $nickname, $password){
-        $usuario = new Usuario(nombre:$nombre, nickname:$nickname, password:$password);
+    public static function registroUsuarioBBDD($nombre, $nickname, $passwordC){
+        $usuario = new Usuario(nombre:$nombre, nickname:$nickname, passwordC:$passwordC);
 
         ModeloUsuarios::insertarUsuario($usuario);
-
-        VistaConfirmacionRegistro::render();
 
     }
 

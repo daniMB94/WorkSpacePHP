@@ -11,12 +11,12 @@
     <input type="text" class="form-control" id="nickname" name="nickname">
   </div>
   <div class="col-md-6">
-    <label for="password" class="form-label ">Password</label>
-    <input type="password" class="form-control" id="password" name="password">
+    <label for="passwordC" class="form-label ">Password</label>
+    <input type="password" class="form-control" id="passwordC" name="passwordC">
   </div>
 
   <div class="col-12">
-    <button type="submit" class="btn btn-primary" name="accion" value="registrarse">Sign in</button>
+    <button type="submit" class="btn btn-primary" name="accion" value="registrarse">Sign up</button>
   </div>
 </form>
 </div>

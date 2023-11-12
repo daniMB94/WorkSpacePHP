@@ -9,10 +9,10 @@ class ModeloUsuarios{
         $conexionObject = new ConexionBaseDeDatos();
         $conexion = $conexionObject->getConexion();
 
-        $consulta = $conexion->prepare("INSERT INTO usuarios(nombre, nickname, password) VALUES (?,?,?)");
+        $consulta = $conexion->prepare("INSERT INTO Usuarios(nombre, nickname, passwordC) VALUES (?,?,?)");
         $consulta->bindValue(1, $usuario->getNombre());
         $consulta->bindValue(2, $usuario->getNickname());
-        $consulta->bindValue(3, $usuario->getPassword());
+        $consulta->bindValue(3, $usuario->getPasswordC());
 
         $consulta->execute();
 

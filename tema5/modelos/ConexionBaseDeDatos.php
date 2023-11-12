@@ -16,7 +16,7 @@ class ConexionBaseDeDatos
 
         try {
             if ($this->conexion == null) {
-                $this->conexion = new PDO("mysql:host=" . $host . ";dbname=" . "RegalosNavidad" . "root", "toor");
+                $this->conexion = new PDO("mysql:host=" . $host . ";dbname=" . "RegalosNavidad", "root", "toor");
                 $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $this->conexion->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             }

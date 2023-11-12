@@ -6,13 +6,13 @@ class Usuario{
     private $id;
     private $nombre;
     private $nickname;
-    private $password;
+    private $passwordC;
 
-    public function __construct($id = "", $nombre = "", $nickname = "", $password = "") {
+    public function __construct($id = "", $nombre = "", $nickname = "", $passwordC = "") {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->nickname = $nickname;
-        $this->password = $password;
+        $this->passwordC = $passwordC;
     }
 
     public function getId(){
@@ -26,9 +26,9 @@ class Usuario{
         return $this;
     }
 
-    public function getNombre($nombre){
-        $this->nombre = $nombre;
-        return $this;
+    public function getNombre(){
+        return $this->nombre;
+
     }
 
     /**
@@ -38,7 +38,7 @@ class Usuario{
         $this->nombre = $nombre;
         return $this;
     }
-    public function getNickname($nickname){
+    public function getNickname(){
         return $this->nickname;
     }
     /**
@@ -48,14 +48,14 @@ class Usuario{
         $this->nickname = $nickname;
         return $this;
     }
-    public function getpassword(){
-        return $this->password;
+    public function getpasswordC(){
+        return $this->passwordC;
     }
     /**
      * @return self
      */
-    public function setPassword($password){
-        $this->password = $password;
+    public function setPasswordC($passwordC){
+        $this->passwordC = $passwordC;
         return $this;
     }
 }
