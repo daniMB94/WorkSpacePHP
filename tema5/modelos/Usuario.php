@@ -1,6 +1,6 @@
 <?php
 
-namespace RegalosNavidad\modelos;
+namespace regalosNavidad\modelos;
 
 class Usuario{
     private $id;
@@ -26,7 +26,38 @@ class Usuario{
         return $this;
     }
 
-    
+    public function getNombre($nombre){
+        $this->nombre = $nombre;
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function setNombre($nombre){
+        $this->nombre = $nombre;
+        return $this;
+    }
+    public function getNickname($nickname){
+        return $this->nickname;
+    }
+    /**
+     * @return self
+     */
+    public function setNickname($nickname){
+        $this->nickname = $nickname;
+        return $this;
+    }
+    public function getpassword(){
+        return $this->password;
+    }
+    /**
+     * @return self
+     */
+    public function setPassword($password){
+        $this->password = $password;
+        return $this;
+    }
 }
 
 ?>

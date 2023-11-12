@@ -33,14 +33,9 @@ class ConexionBaseDeDatos
 		return $this->conexion;
 	}
 	
-	/**
-	 * @param mixed $conexion 
-	 * @return self
-	 */
-	public function setConexion($conexion): self {
-		$this->conexion = $conexion;
-		return $this;
-	}
+    public function cerrarConexion(){
+        $this->conexion = null;
+    }
 }
 
 ?>

@@ -21,6 +21,15 @@ if (isset($_REQUEST)) {
 
     if (isset($_REQUEST["accion"])) {
 
+        if (strcmp($_REQUEST["accion"], "registrarse") == 0) {
+            $nombre = $_REQUEST["nombre"];
+            $nickname = $_REQUEST["nickname"];
+            $password = $_REQUEST["password"];
+            ControladorRegalosNavidad::registroUsuarioBBDD($nombre, $nickname, $password);
+
+            ControladorRegalosNavidad::mostrarConfirmacionRegistro();
+        }
+
 
 
     } else {

@@ -1,6 +1,6 @@
 <?php
 
-namespace RegalosNavidad\modelos;
+namespace regalosNavidad\modelos;
 
 class Enlace
 {
