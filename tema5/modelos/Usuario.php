@@ -59,5 +59,3 @@ class Usuario{
         return $this;
     }
 }
-
-?>

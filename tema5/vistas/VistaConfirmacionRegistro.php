@@ -9,5 +9,3 @@ class VistaConfirmacionRegistro{
         include("pie.php");
     }
 }
-
-?>

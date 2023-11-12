@@ -9,5 +9,3 @@ class VistaFormularioRegistro{
         include("pie.php");
     }
 }
-
-?>

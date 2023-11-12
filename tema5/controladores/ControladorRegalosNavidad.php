@@ -2,9 +2,7 @@
 
 namespace regalosNavidad\controladores;
 
-use DeepRacer\modelos\ConexionBaseDeDatos;
 use regalosNavidad\vistas\VistaInicio;
-use regalosNavidad\modelos\ModeloRegalos;
 use regalosNavidad\vistas\VistaConfirmacionRegistro;
 use regalosNavidad\modelos\Usuario;
 use regalosNavidad\modelos\ModeloUsuarios;
@@ -41,6 +39,3 @@ class ControladorRegalosNavidad
     }
 
 }
-
-
-?>

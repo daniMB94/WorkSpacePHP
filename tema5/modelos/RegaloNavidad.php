@@ -90,5 +90,3 @@ class RegaloNavidad
         return $this;
     }
 }
-
-?>
