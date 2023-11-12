@@ -1,9 +1,11 @@
 <?php
 
+
 namespace regalosNavidad;
 
 use regalosNavidad\controladores\ControladorRegalosNavidad;
 
+session_start();
 
 //Autocargar clases
 spl_autoload_register(function ($class) {
@@ -52,11 +54,12 @@ if (isset($_REQUEST)) {
         if (strcmp($_REQUEST["accion"], "signIn") == 0) {
             $nickname = $_POST["nickname"];
             $passwordC = $_POST["passwordC"];
-
+         
             $autentificacionCorrecta = ControladorRegalosNavidad::comprobarCredenciales($nickname, $passwordC);
 
             if($autentificacionCorrecta){
                 $idUsuario = ControladorRegalosNavidad::idUsuario($nickname);
+
                 ControladorRegalosNavidad::mostrarRegalosUsuario($idUsuario);
             } else {
                 ControladorRegalosNavidad::mostrarError();
