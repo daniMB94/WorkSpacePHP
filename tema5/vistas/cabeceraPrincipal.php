@@ -11,6 +11,6 @@
 
 <body>
 
-  <header>
-
+  <header class="vh-50 bg-primary">
+<h1>CABECERA</h1>
   </header>

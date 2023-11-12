@@ -20,7 +20,7 @@ class ModeloUsuarios{
         $conexionObject->cerrarConexion();
     }
 
-    public static function confirmarExistenciaUsuario($nickname) {
+    public static function todosLosUsuarios() {
 
         $conexionObject = new ConexionBaseDeDatos();
         $conexion = $conexionObject->getConexion();
@@ -33,6 +33,14 @@ class ModeloUsuarios{
 
         $conexionObject->cerrarConexion();
 
+        return $usuarios;
+    }
+
+    public static function confirmarExistenciaUsuario($nickname){
+
+    
+        $usuarios = self::todosLosUsuarios();
+
         foreach($usuarios as $usuario) {
             if(strcmp($usuario->getNickname(), $nickname) == 0) {
 
@@ -42,8 +50,40 @@ class ModeloUsuarios{
         }
 
         return false;
-
-        
        
     }
+
+    public static function comprobarContraseniaUsuario($passwordC, $nickname) {
+        $usuarios = self::todosLosUsuarios();
+
+        foreach($usuarios as $usuario) {
+            if(strcmp($usuario->getNickname(), $nickname) == 0 && strcmp($usuario->getPasswordC (), $passwordC == 0)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static function idUsuario($nickname){
+        $conexionObject = new ConexionBaseDeDatos();
+        $conexion = $conexionObject->getConexion();
+
+        $consulta = $conexion->prepare("SELECT * FROM Usuarios WHERE nickname = :nickname");
+        $consulta->bindParam(':nickname', $nickname);        
+        $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'regalosNavidad\modelos\Usuario'); //Nombre de la clase
+        $consulta-> execute();
+
+        $usuarios = $consulta->fetchAll();
+
+        $conexionObject->cerrarConexion();
+
+        foreach($usuarios as $usuario){
+            $idUsuario = $usuario->getId();
+        }
+
+        return $idUsuario;
+    }
+
+
 }

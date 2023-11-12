@@ -21,15 +21,19 @@ if (isset($_REQUEST)) {
 
     if (isset($_REQUEST["accion"])) {
 
+        //CAPTURAMOS LOS VALORES DEL FORMULARIO PARA USARLOS
         if (strcmp($_REQUEST["accion"], "enviarDatosRegistro") == 0) {
             $nombre = $_REQUEST["nombre"];
             $nickname = $_REQUEST["nickname"];
             $passwordC = $_REQUEST["passwordC"];
 
-            $confirmacionExistenciaPrevia = ControladorRegalosNavidad::comprobarExistenciaUsuario($nickname);
+            //COMPROBAR SI ESOS DATOS DE REGISTRO YA EXISTEN USANDO EL NICKNAME
 
+            $confirmacionExistenciaPrevia = ControladorRegalosNavidad::comprobarExistenciaUsuario($nickname);
+            //SI EXISTE EL NICKNAME MOSTRAMOS MENSAJE
             if ($confirmacionExistenciaPrevia) {
-                echo "<h4>Este usuario ya existe en la BBDD</h4>";
+                ControladorRegalosNavidad::mostrarErrorRegistro();
+            //SI NO EXISTE LO REGISTRAMOS EN LA BBDD Y MOSTRAMOS MENSAJE
             } else {
                 ControladorRegalosNavidad::registroUsuarioBBDD($nombre, $nickname, $passwordC);
 
@@ -39,10 +43,28 @@ if (isset($_REQUEST)) {
                 
         }
 
-        if (strcmp($_REQUEST["accion"], "registrarse") == 0) {
+        //REDIRECCIONAR AL FORMULARIO DE REGISTRO
+        if (strcmp($_REQUEST["accion"], "formularioRegistro") == 0) {
             ControladorRegalosNavidad::introducirDatosRegistro();
 
         }
+        //CAPTURAMOS LOS VALORES DEL FORMULARIO PARA USARLOS Y COMPROBAMOS SI LAS CREDENCIALES SON CORRECTAS
+        if (strcmp($_REQUEST["accion"], "signIn") == 0) {
+            $nickname = $_POST["nickname"];
+            $passwordC = $_POST["passwordC"];
+
+            $autentificacionCorrecta = ControladorRegalosNavidad::comprobarCredenciales($nickname, $passwordC);
+
+            if($autentificacionCorrecta){
+                $idUsuario = ControladorRegalosNavidad::idUsuario($nickname);
+                ControladorRegalosNavidad::mostrarRegalosUsuario($idUsuario);
+            } else {
+                ControladorRegalosNavidad::mostrarError();
+            }
+           
+        }
+
+        
 
 
 

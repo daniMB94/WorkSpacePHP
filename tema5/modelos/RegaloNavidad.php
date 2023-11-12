@@ -6,15 +6,13 @@ class RegaloNavidad
 {
 
     private $id;
-    private $usuario;
     private $categoria;
     private $nombre_articulo;
     private $quien_recibe;
 
-    public function __construct($id = "", $usuario = "", $categoria = "", $nombre_articulo = "", $quien_recibe = "")
+    public function __construct($id = "", $categoria = "", $nombre_articulo = "", $quien_recibe = "")
     {
         $this->id = $id;
-        $this->usuario = $usuario;
         $this->categoria = $categoria;
         $this->nombre_articulo = $nombre_articulo;
         $this->quien_recibe = $quien_recibe;
@@ -34,20 +32,6 @@ class RegaloNavidad
         return $this;
     }
 
-    public function getUsuario()
-    {
-        return $this->usuario;
-    }
-
-    /**
-     * @return self
-     */
-
-    public function setUsuario($usuario)
-    {
-        $this->usuario = $usuario;
-        return $this;
-    }
 
     public function getCategoria()
     {
