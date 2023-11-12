@@ -54,11 +54,12 @@ class ModeloUsuarios{
     }
 
     public static function comprobarContraseniaUsuario($passwordC, $nickname) {
-        $usuarios = self::todosLosUsuarios();
-
-        foreach($usuarios as $usuario) {
-            if(strcmp($usuario->getNickname(), $nickname) == 0 && strcmp($usuario->getPasswordC (), $passwordC == 0)) {
-                return true;
+        if (self::confirmarExistenciaUsuario($nickname)){
+            $usuarios = self::todosLosUsuarios();
+            foreach($usuarios as $usuario){
+                if (strcmp($usuario->getPasswordC, $passwordC) == 0){
+                    return true;
+                }
             }
         }
 
