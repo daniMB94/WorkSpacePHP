@@ -2,16 +2,12 @@
 
 namespace regalosNavidad\vistas;
 
-class VistaInicio
-{
-
-    public static function render()
-    {
+class VistaFormularioRegistro{
+    public static function render(){
         include("cabeceraPrincipal.php");
-        include("paginaPrincipal.php");
+        include("signUp.php");
         include("pie.php");
     }
-
 }
 
 ?>

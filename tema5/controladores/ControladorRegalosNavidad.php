@@ -8,6 +8,7 @@ use regalosNavidad\modelos\ModeloRegalos;
 use regalosNavidad\vistas\VistaConfirmacionRegistro;
 use regalosNavidad\modelos\Usuario;
 use regalosNavidad\modelos\ModeloUsuarios;
+use regalosNavidad\vistas\VistaFormularioRegistro;
 
 class ControladorRegalosNavidad
 {
@@ -27,6 +28,16 @@ class ControladorRegalosNavidad
 
         ModeloUsuarios::insertarUsuario($usuario);
 
+    }
+
+    public static function introducirDatosRegistro() {
+        VistaFormularioRegistro::render();
+    }
+
+    public static function comprobarExistenciaUsuario($nickname) {
+
+        return ModeloUsuarios::confirmarExistenciaUsuario($nickname);
+            
     }
 
 }

@@ -21,13 +21,27 @@ if (isset($_REQUEST)) {
 
     if (isset($_REQUEST["accion"])) {
 
-        if (strcmp($_REQUEST["accion"], "registrarse") == 0) {
+        if (strcmp($_REQUEST["accion"], "enviarDatosRegistro") == 0) {
             $nombre = $_REQUEST["nombre"];
             $nickname = $_REQUEST["nickname"];
             $passwordC = $_REQUEST["passwordC"];
-            ControladorRegalosNavidad::registroUsuarioBBDD($nombre, $nickname, $passwordC);
 
-            ControladorRegalosNavidad::mostrarConfirmacionRegistro();
+            $confirmacionExistenciaPrevia = ControladorRegalosNavidad::comprobarExistenciaUsuario($nickname);
+
+            if ($confirmacionExistenciaPrevia) {
+                echo "<h4>Este usuario ya existe en la BBDD</h4>";
+            } else {
+                ControladorRegalosNavidad::registroUsuarioBBDD($nombre, $nickname, $passwordC);
+
+                ControladorRegalosNavidad::mostrarConfirmacionRegistro();
+            }
+
+                
+        }
+
+        if (strcmp($_REQUEST["accion"], "registrarse") == 0) {
+            ControladorRegalosNavidad::introducirDatosRegistro();
+
         }
 
 
