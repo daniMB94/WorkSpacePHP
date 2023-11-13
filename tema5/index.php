@@ -3,6 +3,7 @@
 
 namespace regalosNavidad;
 
+use DeepRacer\controladores\ControladorDeepRacer;
 use regalosNavidad\controladores\ControladorRegalosNavidad;
 
 session_start();
@@ -56,25 +57,46 @@ if (isset($_REQUEST)) {
             $passwordC = $_POST["passwordC"];
          
             $autentificacionCorrecta = ControladorRegalosNavidad::comprobarCredenciales($nickname, $passwordC);
-
+            //UNA VEZ SABEMOS QUE ESE NICKNAME Y CONTRASEÑA EXISTE Y SON CORRECTOS SACAMOS EL ID PARA MOSTRAR SUS REGALOS
             if($autentificacionCorrecta){
+
+                $_SESSION['nickname'] = $nickname;
+
                 $idUsuario = ControladorRegalosNavidad::idUsuario($nickname);
 
                 ControladorRegalosNavidad::mostrarRegalosUsuario($idUsuario);
+            //EN CASO DE NO TENER UNA AUTENTIFICACION CORRECTA MOSTRAMOS UN MENSAJE DE ERROR PARA REDIRIGIR AL FORMULARIO DE LOGIN
             } else {
                 ControladorRegalosNavidad::mostrarError();
             }
            
         }
+        if (strcmp($_REQUEST["accion"], "cerrarSesion") == 0) {
+            ControladorRegalosNavidad::cerrarSesion();
+        }
+        //POR IMPLEMENTAR EN LA CLASE MODELOREGALOSNAVIDAD
+        if (strcmp($_SESSION["accion"], "eliminarRegalo") == 0) {
+            ControladorRegalosNavidad::eliminarRegalo($idRegalo);
+        }
+
+        //POR IMPLEMENTAR
+        if (strcmp($_SESSION['accion'], "insertarRegalo") == 0) {
+            
+        }
 
         
 
 
-
     } else {
-        //Mostrar inicio
+        //SI NO ESTÁ LOGUEADO MOSTRARÁ LA PAGINA PARA LOGUEARSE
+        if (!isset($_SESSION["nickname"])) {
+            //Mostrar inicio
         ControladorRegalosNavidad::mostrarInicio();
-    
+        //SI ESTÁ LOGUEADO DIRECTAMENTE MOSTRAMOS LA TABLA CON SUS REGALOS GUARDADOS
+        } else {
+            ControladorRegalosNavidad::mostrarRegalosUsuario(ControladorRegalosNavidad::idUsuario($_SESSION["nickname"]));
+        }
+        
     }
 
 

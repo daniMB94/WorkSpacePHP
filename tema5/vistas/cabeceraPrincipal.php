@@ -14,5 +14,14 @@
 
   <header class="vh-50 bg-primary">
 <h1>CABECERA</h1>
+<?php
 
+  if (isset($_SESSION['nickname'])) {
+    echo "<p>".$_SESSION['nickname']."</p>";
+    echo "<a href='index.php?accion=cerrarSesion'><button type='submit' class='btn btn-warning'>cerrar sesion</button></a>";
+  } else {
+    echo "<h1>HAY QUE LOGUEARSE</h1>";
+  }
+
+?>
   </header>

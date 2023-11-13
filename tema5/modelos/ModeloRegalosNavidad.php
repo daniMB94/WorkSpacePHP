@@ -20,6 +20,10 @@ class ModeloRegalosNavidad{
 
         return $regalos;
     }
+
+    public static function eliminarRegalo($idRegalo){
+        //POR IMPLEMENTAR
+    }
 }
 
 ?>

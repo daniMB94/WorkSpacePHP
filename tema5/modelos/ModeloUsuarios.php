@@ -72,7 +72,7 @@ class ModeloUsuarios{
         return false;
        
     }
-
+    //DEVUELVE TRUE SI EL USUARIO EXISTE Y SU CONTRASEÑA COINCIDE CON LA DE DICHO USUARIO
     public static function comprobarContraseniaUsuario($passwordC, $nickname) {
         if (self::confirmarExistenciaUsuario($nickname)){
             if (strcmp(self::usuario($nickname)->getPasswordC(), $passwordC) == 0){

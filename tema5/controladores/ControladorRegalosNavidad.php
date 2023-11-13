@@ -54,10 +54,11 @@ class ControladorRegalosNavidad
         return ModeloUsuarios::comprobarContraseniaUsuario($nickname, $passwordC);
     }
 
+    //DEVUELVE EL ID DEL USUARIO QUE ESTÁ LOGUEADO Y SE USA PARA COMPROBAR SI COINCIDE CON LA CONTRASEÑA QUE SE HA USADO (SE USA EN EL INDEX)
     public static function idUsuario($nickname){
         return ModeloUsuarios::idUsuario($nickname);
     }
-
+    //MUESTRA LOS REGALOS DEL ID DE USUARIO QUE ESTÁ LOGUEADO
     public static function mostrarRegalosUsuario($idUsuario){
 
         $regalos = ModeloRegalosNavidad::mostrarRegalosUsuario($idUsuario);
@@ -67,6 +68,16 @@ class ControladorRegalosNavidad
     }
     public static function mostrarError(){
         VistaErrorSignIn::render();
+    }
+    //CERRAMOS SESION Y VOLVEMOS APINTAR LA PANTALLA PRINCIPAL
+    public static function cerrarSesion(){
+        session_destroy();
+        
+        VistaInicio::render();
+    }
+    //PENDIENTE IMPLEMENTAR PARA ELIMINAR REGALOS DESDE UN BOTON
+    public static function eliminarRegalo($idRegalo){
+        ModeloRegalosNavidad::eliminarRegalo($idRegalo);
     }
 
 }
