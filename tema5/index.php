@@ -75,13 +75,14 @@ if (isset($_REQUEST)) {
             ControladorRegalosNavidad::cerrarSesion();
         }
         //POR IMPLEMENTAR EN LA CLASE MODELOREGALOSNAVIDAD
-        if (strcmp($_SESSION["accion"], "eliminarRegalo") == 0) {
+        if (strcmp($_REQUEST["accion"], "eliminarRegalo") == 0) {
+            $idRegalo = $_REQUEST['idRegalo'];
             ControladorRegalosNavidad::eliminarRegalo($idRegalo);
         }
 
         //POR IMPLEMENTAR
         if (strcmp($_SESSION['accion'], "insertarRegalo") == 0) {
-            
+            ControladorRegalosNavidad::insertarRegalo();
         }
 
         

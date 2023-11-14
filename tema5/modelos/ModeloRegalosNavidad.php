@@ -22,7 +22,14 @@ class ModeloRegalosNavidad{
     }
 
     public static function eliminarRegalo($idRegalo){
-        //POR IMPLEMENTAR
+        $conexionObject = new ConexionBaseDeDatos();
+        $conexion = $conexionObject->getConexion();
+
+        $consulta = $conexion->prepare("DELETE FROM Regalos WHERE id = :id");
+        $consulta->bindParam(':id', $idRegalo);
+        $consulta->execute();
+
+        $conexionObject->cerrarConexion();
     }
 }
 

@@ -40,7 +40,7 @@ class VistaRegalosUsuario
                     echo " <td>" . $regalo->getNombre_articulo() . "</td>";
                     echo " <td>" . $regalo->getQuien_recibe() . "</td>";
                     echo "<td>";
-                    echo "<a href='index.php?accion=eliminarRegalo&id=" . $regalo->getId() . "'><button class='btn btn-danger'>X</button>";
+                    echo "<a href='index.php?accion=eliminarRegalo&idRegalo=" . $regalo->getId() . "'><button class='btn btn-danger'>X</button>";
                     echo "</td>";
                     echo "</tr>";
                     echo "</div>";
