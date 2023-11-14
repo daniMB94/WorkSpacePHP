@@ -81,7 +81,7 @@ if (isset($_REQUEST)) {
         }
 
         //POR IMPLEMENTAR
-        if (strcmp($_SESSION['accion'], "insertarRegalo") == 0) {
+        if (strcmp($_REQUEST["accion"], "insertarRegalo") == 0) {
             ControladorRegalosNavidad::insertarRegalo();
         }
 

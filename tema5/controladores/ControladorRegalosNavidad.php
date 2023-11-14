@@ -81,14 +81,16 @@ class ControladorRegalosNavidad
 
         session_destroy();
 
-        VistaInicio::render();
+        header("location: index.php");
+        
     }
+
     //ELIMINA EL REGALO SELECCIONADO
     public static function eliminarRegalo($idRegalo)
     {
         ModeloRegalosNavidad::eliminarRegalo($idRegalo);
+        header("location: index.php");
     }
-
 
     //REDIRIGE A OTRA PÁGINA DONDE INTRODUCIR LOS DATOS DEL NUEVO REGALO
     public static function insertarRegalo()
