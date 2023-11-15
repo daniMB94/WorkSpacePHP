@@ -1,0 +1,27 @@
+[{
+    "nombre": "Good of War",
+    "plataformas": [
+        "PS5", "XBox", "PC"
+    ],
+    "precio" : 60,
+    "nota" : 9,
+    "descripcion": "Pavo repartiendo espota con un hacha"
+},
+{
+    "nombre": "EAFC 24",
+    "plataformas": [
+        "PS5", "XBox", "PC"
+    ],
+    "precio" : 70,
+    "nota" : 7,
+    "descripcion": "Juego para echar pachangas online con los colegas"
+},
+{
+    "nombre": "Call of duty ModernWarfare3",
+    "plataformas": [
+        "PS5", "XBox", "PC"
+    ],
+    "precio" : 80,
+    "nota" : 8,
+    "descripcion": "Pegar tiros como un descosido"
+}]
