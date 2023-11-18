@@ -9,9 +9,11 @@ use regalosNavidad\modelos\ModeloUsuarios;
 use regalosNavidad\vistas\VistaFormularioRegistro;
 use regalosNavidad\vistas\VistaErrorRegistro;
 use regalosNavidad\modelos\ModeloRegalosNavidad;
+use regalosNavidad\modelos\RegaloNavidad;
 use regalosNavidad\vistas\VistaRegalosUsuario;
 use regalosNavidad\vistas\VistaErrorSignIn;
-use regalosNavidad\vistas\VistaInsertarRegalo;
+use regalosNavidad\vistas\VistaRecogerDatosNuevoRegalo;
+
 
 
 class ControladorRegalosNavidad
@@ -93,8 +95,18 @@ class ControladorRegalosNavidad
     }
 
     //REDIRIGE A OTRA PÁGINA DONDE INTRODUCIR LOS DATOS DEL NUEVO REGALO
-    public static function insertarRegalo()
+    public static function recogerDatosNuevoRegalo()
     {
-        VistaInsertarRegalo::render();
+        VistaRecogerDatosNuevoRegalo::render();
+    }
+
+    public static function enviarDatosNuevoRegalo($idUsuario, $categoria, $nombre_articulo, $quien__recibe){
+
+        $nuevoRegalo = new RegaloNavidad(idUsuario: $idUsuario, categoria: $categoria, nombre_articulo: $nombre_articulo, quien_recibe: $quien__recibe);
+
+        ModeloRegalosNavidad::insertarRegalo($nuevoRegalo);
+
+        header("location: index.php");
+
     }
 }

@@ -49,7 +49,7 @@ class VistaRegalosUsuario
 
                 echo "</tbody>
             </table>";
-                echo "<a href='index.php?accion=insertarRegalo'><button type='submit' class='btn btn-primary'>Insertar Regalo</button></a>";
+                echo "<a href='index.php?accion=recogerDatosNuevoRegalo'><button type='submit' class='btn btn-primary'>Insertar Regalo</button></a>";
 
 
 

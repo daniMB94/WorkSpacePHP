@@ -3,7 +3,6 @@
 
 namespace regalosNavidad;
 
-use DeepRacer\controladores\ControladorDeepRacer;
 use regalosNavidad\controladores\ControladorRegalosNavidad;
 
 session_start();
@@ -74,15 +73,27 @@ if (isset($_REQUEST)) {
         if (strcmp($_REQUEST["accion"], "cerrarSesion") == 0) {
             ControladorRegalosNavidad::cerrarSesion();
         }
-        //POR IMPLEMENTAR EN LA CLASE MODELOREGALOSNAVIDAD
+        //ELIMINA EL REGALO DE LA BBDD
         if (strcmp($_REQUEST["accion"], "eliminarRegalo") == 0) {
             $idRegalo = $_REQUEST['idRegalo'];
             ControladorRegalosNavidad::eliminarRegalo($idRegalo);
         }
 
         //POR IMPLEMENTAR
-        if (strcmp($_REQUEST["accion"], "insertarRegalo") == 0) {
-            ControladorRegalosNavidad::insertarRegalo();
+        if (strcmp($_REQUEST["accion"], "recogerDatosNuevoRegalo") == 0) {
+            ControladorRegalosNavidad::recogerDatosNuevoRegalo();
+        }
+
+        if (strcmp($_REQUEST["accion"], "enviarDatosNuevoRegalo") == 0) {
+            echo "<h1>FUNCIONA</h1>";
+            /*
+            $idUsuario = ControladorRegalosNavidad::idUsuario($_SESSION['nickname']);
+            $categoria = $_POST["categoria"];
+            $nombre_articulo = $_POST["nombre_articulo"];
+            $quien_recibe = $_POST["quien_recibe"];
+
+            ControladorRegalosNavidad::enviarDatosNuevoRegalo($idUsuario, $categoria, $nombre_articulo, $quien_recibe);
+            */
         }
 
         

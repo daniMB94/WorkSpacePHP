@@ -1,6 +1,7 @@
 <?php
 
 namespace regalosNavidad\modelos;
+use regalosNavidad\modelos\ConexionBaseDeDatos;
 use PDO;
 
 class ModeloRegalosNavidad{
@@ -27,6 +28,21 @@ class ModeloRegalosNavidad{
 
         $consulta = $conexion->prepare("DELETE FROM Regalos WHERE id = :id");
         $consulta->bindParam(':id', $idRegalo);
+        $consulta->execute();
+
+        $conexionObject->cerrarConexion();
+    }
+
+    public static function insertarRegalo($nuevoRegalo){
+        $conexionObject = new ConexionBaseDeDatos();
+        $conexion = $conexionObject->getConexion();
+
+        $consulta = $conexion->prepare("INSERT INTO Regalos(idUsuario, categoria, nombre_articulo, quien_recibe) VALUES (?, ?, ?, ?)");
+        $consulta->bindValue(1, $nuevoRegalo->getIdUsuario());
+        $consulta->bindValue(2, $nuevoRegalo->getCategoria());
+        $consulta->bindValue(3, $nuevoRegalo->getNombre_articulo());
+        $consulta->bindValue(4, $nuevoRegalo->getQuien_recibe());
+
         $consulta->execute();
 
         $conexionObject->cerrarConexion();
