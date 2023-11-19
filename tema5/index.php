@@ -81,8 +81,9 @@ if (isset($_REQUEST)) {
 
         //ORDENA AL CONTROLADOR PINTAR EL FORMULARIO PARA RECOGER LOS DATOS DEL NUEVO REGALO
         if (strcmp($_REQUEST["accion"], "recogerDatosNuevoRegalo") == 0) {
-            if (!is_null($_REQUEST['idRegalo'])) {
-                $idRegalo = $_REQUEST['idRegalo'];
+
+            if (isset($_REQUEST['idRegalo'])) {
+                $idRegalo = $_REQUEST['idRegalo'];//ESTA VARIABLE SE PASA CON EL ID DEL REGALO
             } else {
                 $idRegalo = null;
             }
@@ -97,8 +98,9 @@ if (isset($_REQUEST)) {
             $categoria = $_POST["categoria"];
             $nombre_articulo = $_POST["nombre_articulo"];
             $quien_recibe = $_POST["quien_recibe"];
+            $anio = $_POST["anio"];
 
-            ControladorRegalosNavidad::enviarDatosNuevoRegalo($idUsuario, $categoria, $nombre_articulo, $quien_recibe);
+            ControladorRegalosNavidad::enviarDatosNuevoRegalo($idUsuario, $categoria, $nombre_articulo, $quien_recibe, $anio);
             
         }
 
@@ -109,8 +111,9 @@ if (isset($_REQUEST)) {
             $categoria = $_REQUEST['categoria'];
             $nombre_articulo = $_REQUEST['nombre_articulo'];
             $quien_recibe = $_REQUEST['quien_recibe'];
+            $anio = $_REQUEST['anio'];
 
-            ControladorRegalosNavidad::modificarRegalo($idRegalo, $categoria, $nombre_articulo, $quien_recibe);
+            ControladorRegalosNavidad::modificarRegalo($idRegalo, $categoria, $nombre_articulo, $quien_recibe, $anio);
         }
         
 

@@ -28,6 +28,7 @@ class VistaRegalosUsuario
                 <th>Categoria</th>
                 <th>Nombre</th>
                 <th>Quien recibe</th>
+                <th>Año</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -39,6 +40,7 @@ class VistaRegalosUsuario
                     echo " <td>" . $regalo->getCategoria() . "</td>";
                     echo " <td>" . $regalo->getNombre_articulo() . "</td>";
                     echo " <td>" . $regalo->getQuien_recibe() . "</td>";
+                    echo " <td>" . $regalo->getAnio() . "</td>";
                     echo "<td>";
                     echo "<a href='index.php?accion=eliminarRegalo&idRegalo=" . $regalo->getId() . "'><button class='btn btn-danger'>X</button>";
                     echo "<a href='index.php?accion=recogerDatosNuevoRegalo&idRegalo=" . $regalo->getId() . "'><button class='btn btn-light'>@</button>";

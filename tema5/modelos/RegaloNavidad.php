@@ -10,14 +10,16 @@ class RegaloNavidad
     private $categoria;
     private $nombre_articulo;
     private $quien_recibe;
+    private $anio;
 
-    public function __construct($id = "", $idUsuario = "", $categoria = "", $nombre_articulo = "", $quien_recibe = "")
+    public function __construct($id = "", $idUsuario = "", $categoria = "", $nombre_articulo = "", $quien_recibe = "", $anio = "")
     {
         $this->id = $id;
         $this->idUsuario = $idUsuario;
         $this->categoria = $categoria;
         $this->nombre_articulo = $nombre_articulo;
         $this->quien_recibe = $quien_recibe;
+        $this->anio = $anio;
     }
 
     public function getId()
@@ -87,6 +89,17 @@ class RegaloNavidad
     public function setQuien_recibe($quien_recibe)
     {
         $this->quien_recibe = $quien_recibe;
+        return $this;
+    }
+
+    public function getAnio()
+    {
+        return $this->anio;
+    }
+
+    public function setAnio($anio)
+    {
+        $this->anio = $anio;
         return $this;
     }
 }

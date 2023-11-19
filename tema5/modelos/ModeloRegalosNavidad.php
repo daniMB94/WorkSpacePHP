@@ -37,25 +37,27 @@ class ModeloRegalosNavidad{
         $conexionObject = new ConexionBaseDeDatos();
         $conexion = $conexionObject->getConexion();
 
-        $consulta = $conexion->prepare("INSERT INTO Regalos(idUsuario, categoria, nombre_articulo, quien_recibe) VALUES (?, ?, ?, ?)");
+        $consulta = $conexion->prepare("INSERT INTO Regalos(idUsuario, categoria, nombre_articulo, quien_recibe, anio) VALUES (?, ?, ?, ?, ?)");
         $consulta->bindValue(1, $nuevoRegalo->getIdUsuario());
         $consulta->bindValue(2, $nuevoRegalo->getCategoria());
         $consulta->bindValue(3, $nuevoRegalo->getNombre_articulo());
         $consulta->bindValue(4, $nuevoRegalo->getQuien_recibe());
+        $consulta->bindValue(5, $nuevoRegalo->getAnio());
 
         $consulta->execute();
 
         $conexionObject->cerrarConexion();
     }
 
-    public static function modificarRegalo($idRegalo, $categoria, $nombre_articulo, $quien_recibe) {
+    public static function modificarRegalo($idRegalo, $categoria, $nombre_articulo, $quien_recibe, $anio) {
         $conexionObject = new ConexionBaseDeDatos();
         $conexion = $conexionObject->getConexion();
 
-        $consulta = $conexion->prepare("UPDATE Regalos SET categoria = :categoria, nombre_articulo = :nombre_articulo, quien_recibe = :quien_recibe WHERE id = :idRegalo");
+        $consulta = $conexion->prepare("UPDATE Regalos SET categoria = :categoria, nombre_articulo = :nombre_articulo, quien_recibe = :quien_recibe, anio = :anio WHERE id = :idRegalo");
         $consulta->bindParam(":categoria", $categoria);
         $consulta->bindParam(":nombre_articulo", $nombre_articulo);
         $consulta->bindParam(":quien_recibe", $quien_recibe);
+        $consulta->bindParam(":anio", $anio);
         $consulta->bindParam(":idRegalo", $idRegalo);
 
         $consulta->execute();

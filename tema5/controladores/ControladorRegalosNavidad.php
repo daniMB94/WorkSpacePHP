@@ -100,9 +100,9 @@ class ControladorRegalosNavidad
         VistaRecogerDatosNuevoRegalo::render($idRegalo);
     }
     //ORDENA AL MODELO INSERTAR EL NUEVO REGALO EN LA BBDD Y LUEGO VUELVE AL INDEX PARA PINTAR LA LISTA ACTUALIZADA
-    public static function enviarDatosNuevoRegalo($idUsuario, $categoria, $nombre_articulo, $quien__recibe){
+    public static function enviarDatosNuevoRegalo($idUsuario, $categoria, $nombre_articulo, $quien__recibe, $anio){
 
-        $nuevoRegalo = new RegaloNavidad(idUsuario: $idUsuario, categoria: $categoria, nombre_articulo: $nombre_articulo, quien_recibe: $quien__recibe);
+        $nuevoRegalo = new RegaloNavidad(idUsuario: $idUsuario, categoria: $categoria, nombre_articulo: $nombre_articulo, quien_recibe: $quien__recibe, anio: $anio);
 
         ModeloRegalosNavidad::insertarRegalo($nuevoRegalo);
 
@@ -110,8 +110,8 @@ class ControladorRegalosNavidad
 
     }
 
-    public static function modificarRegalo($idRegalo, $categoria, $nombre_articulo, $quien_recibe) {
-        ModeloRegalosNavidad::modificarRegalo($idRegalo, $categoria, $nombre_articulo, $quien_recibe);
+    public static function modificarRegalo($idRegalo, $categoria, $nombre_articulo, $quien_recibe, $anio) {
+        ModeloRegalosNavidad::modificarRegalo($idRegalo, $categoria, $nombre_articulo, $quien_recibe, $anio);
 
         header("location: index.php");
     }
