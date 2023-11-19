@@ -6,13 +6,14 @@ class VistaRecogerDatosNuevoRegalo
 {
 
 
-    public static function render()
+    public static function render($idRegalo)
     {
 
         include("cabeceraPrincipal.php");
 
 ?>
-        <form style="margin-top: 50px; margin-bottom: 50px" action="index.php" method="post">
+
+        <form class="row justify-content-center p-4" action="index.php" method="post">
 
             <div class="col-md-6">
                 <label for="categoria" class="form-label">Categoria</label>
@@ -26,9 +27,29 @@ class VistaRecogerDatosNuevoRegalo
                 <label for="quien_recibe" class="form-label">Quien lo va a Recibir</label>
                 <input type="text" class="form-control" name="quien_recibe">
             </div>
-
-            <button class="btn btn-success" type="submit" name="accion" value="enviarDatosNuevoRegalo">Enviar</button>
+            <!--SI LA VARIABLE IDREGALO NO ES NULL ENTONCES SE ENVÍA ESE ID REGALO PARA USARLO EN LA MODIFICACION DEL REGALO-->
+            <?php
+            if (!is_null($idRegalo)) {
+            ?>
+                <input type="hidden" name="idRegalo" value="<?= $idRegalo ?>">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-2">
+                    <button class="btn btn-success" type="submit" name="accion" value="modificarDatosRegalo">Enviar</button>
+                </div>
+            <?php
+            //SI LA VARIABLE IDREGALO ES NULA ENTONCES SE ENVÍAN LOS DATOS SIN ID PARA CREAR UN NUEVO REGISTRO EN LA BBDD
+            } else {
+            ?>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-2">
+                    <button class="btn btn-success" type="submit" name="accion" value="enviarDatosNuevoRegalo">Enviar</button>
+                </div>
+            <?php
+            }
+            ?>
         </form>
+
+
+
+
 
 <?php
 

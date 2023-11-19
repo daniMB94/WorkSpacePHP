@@ -12,7 +12,7 @@
 
 <body>
 
-  <header class="vh-50 bg-primary">
+  <header class="vh-50 bg-primary mb-2 p-4">
 <h1>CABECERA</h1>
 <?php
 

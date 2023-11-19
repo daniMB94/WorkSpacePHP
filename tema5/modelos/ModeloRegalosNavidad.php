@@ -47,6 +47,21 @@ class ModeloRegalosNavidad{
 
         $conexionObject->cerrarConexion();
     }
+
+    public static function modificarRegalo($idRegalo, $categoria, $nombre_articulo, $quien_recibe) {
+        $conexionObject = new ConexionBaseDeDatos();
+        $conexion = $conexionObject->getConexion();
+
+        $consulta = $conexion->prepare("UPDATE Regalos SET categoria = :categoria, nombre_articulo = :nombre_articulo, quien_recibe = :quien_recibe WHERE id = :idRegalo");
+        $consulta->bindParam(":categoria", $categoria);
+        $consulta->bindParam(":nombre_articulo", $nombre_articulo);
+        $consulta->bindParam(":quien_recibe", $quien_recibe);
+        $consulta->bindParam(":idRegalo", $idRegalo);
+
+        $consulta->execute();
+
+        $conexionObject->cerrarConexion();
+    }
 }
 
 ?>

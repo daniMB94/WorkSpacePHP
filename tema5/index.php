@@ -79,23 +79,39 @@ if (isset($_REQUEST)) {
             ControladorRegalosNavidad::eliminarRegalo($idRegalo);
         }
 
-        //POR IMPLEMENTAR
+        //ORDENA AL CONTROLADOR PINTAR EL FORMULARIO PARA RECOGER LOS DATOS DEL NUEVO REGALO
         if (strcmp($_REQUEST["accion"], "recogerDatosNuevoRegalo") == 0) {
-            ControladorRegalosNavidad::recogerDatosNuevoRegalo();
+            if (!is_null($_REQUEST['idRegalo'])) {
+                $idRegalo = $_REQUEST['idRegalo'];
+            } else {
+                $idRegalo = null;
+            }
+            ControladorRegalosNavidad::recogerDatosNuevoRegalo($idRegalo);
         }
 
+        //ENVIA LOS DATOS DEL NUEVO REGALO AL CONTROLADOR PARA QUE ESTE ORDENA AL MODELO INSERTARLOS EN LA BBDD
         if (strcmp($_REQUEST["accion"], "enviarDatosNuevoRegalo") == 0) {
-            echo "<h1>FUNCIONA</h1>";
-            /*
+
+            
             $idUsuario = ControladorRegalosNavidad::idUsuario($_SESSION['nickname']);
             $categoria = $_POST["categoria"];
             $nombre_articulo = $_POST["nombre_articulo"];
             $quien_recibe = $_POST["quien_recibe"];
 
             ControladorRegalosNavidad::enviarDatosNuevoRegalo($idUsuario, $categoria, $nombre_articulo, $quien_recibe);
-            */
+            
         }
 
+        //MODIFICA EL REGALO QUE TENGA EL ID CORRESPONDIENTE
+        
+        if (strcmp($_REQUEST["accion"], "modificarDatosRegalo") == 0) {
+            $idRegalo = $_REQUEST['idRegalo'];
+            $categoria = $_REQUEST['categoria'];
+            $nombre_articulo = $_REQUEST['nombre_articulo'];
+            $quien_recibe = $_REQUEST['quien_recibe'];
+
+            ControladorRegalosNavidad::modificarRegalo($idRegalo, $categoria, $nombre_articulo, $quien_recibe);
+        }
         
 
 
