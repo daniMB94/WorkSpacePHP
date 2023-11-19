@@ -59,7 +59,7 @@ if (isset($_REQUEST)) {
             //UNA VEZ SABEMOS QUE ESE NICKNAME Y CONTRASEÑA EXISTE Y SON CORRECTOS SACAMOS EL ID PARA MOSTRAR SUS REGALOS
             if($autentificacionCorrecta){
 
-                $_SESSION['nickname'] = $nickname;
+                $_SESSION["nickname"] = $nickname;
 
                 $idUsuario = ControladorRegalosNavidad::idUsuario($nickname);
 
@@ -115,6 +115,7 @@ if (isset($_REQUEST)) {
 
             ControladorRegalosNavidad::modificarRegalo($idRegalo, $categoria, $nombre_articulo, $quien_recibe, $anio);
         }
+
         
 
 

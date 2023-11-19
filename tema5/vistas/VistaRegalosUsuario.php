@@ -8,16 +8,31 @@ class VistaRegalosUsuario
     public static function render($regalos)
     {
         include("cabeceraPrincipal.php");
-?>
+        ?>
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
                         DESPLEGAR/ESCONDER REGALOS
                     </button>
                 </h2>
+                <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+                    <div class="col-md-6">
+                        <label for="anio" class="form-label">Año</label>
+                        <input type="number" class="form-control" name="anio">
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-2">
+                        <button class="btn btn-info" type="submit">Filtrar por año</button>
+                    </div>
+                </form>
 
                 <?php
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $anio = $_POST["anio"];
+
+                }
+
                 echo "<div id='collapseOne' class='accordion-collapse collapse show' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>";
                 echo "<div class='accordion-body'>";
                 echo "
@@ -34,20 +49,25 @@ class VistaRegalosUsuario
         </thead>
         <tbody>";
                 foreach ($regalos as $regalo) {
-                    echo "<div id='collapseOne' class='accordion-collapse collapse show' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>";
-                    echo "<div class='accordion-body'>";
-                    echo "<tr>";
-                    echo " <td>" . $regalo->getCategoria() . "</td>";
-                    echo " <td>" . $regalo->getNombre_articulo() . "</td>";
-                    echo " <td>" . $regalo->getQuien_recibe() . "</td>";
-                    echo " <td>" . $regalo->getAnio() . "</td>";
-                    echo "<td>";
-                    echo "<a href='index.php?accion=eliminarRegalo&idRegalo=" . $regalo->getId() . "'><button class='btn btn-danger'>X</button>";
-                    echo "<a href='index.php?accion=recogerDatosNuevoRegalo&idRegalo=" . $regalo->getId() . "'><button class='btn btn-light'>@</button>";
-                    echo "</td>";
-                    echo "</tr>";
-                    echo "</div>";
-                    echo "</div>";
+                    if (!$filtrar) {
+                        if (strcmp($regalo->getAnio(), $anio) == 0) {
+
+                            echo "<div id='collapseOne' class='accordion-collapse collapse show' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>";
+                            echo "<div class='accordion-body'>";
+                            echo "<tr>";
+                            echo " <td>" . $regalo->getCategoria() . "</td>";
+                            echo " <td>" . $regalo->getNombre_articulo() . "</td>";
+                            echo " <td>" . $regalo->getQuien_recibe() . "</td>";
+                            echo " <td>" . $regalo->getAnio() . "</td>";
+                            echo "<td>";
+                            echo "<a href='index.php?accion=eliminarRegalo&idRegalo=" . $regalo->getId() . "'><button class='btn btn-danger'>X</button>";
+                            echo "<a href='index.php?accion=recogerDatosNuevoRegalo&idRegalo=" . $regalo->getId() . "'><button class='btn btn-light'>@</button>";
+                            echo "</td>";
+                            echo "</tr>";
+                            echo "</div>";
+                            echo "</div>";
+                        }
+                    }
                 }
 
                 echo "</tbody>
@@ -63,7 +83,7 @@ class VistaRegalosUsuario
 
 
 
-<?php
+        <?php
 
         include("pie.php");
     }
