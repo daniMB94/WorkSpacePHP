@@ -1,5 +1,0 @@
-<div>
-    <h1>CONFIRMACION REGISTRO</h1>
-    <!--BOTON LOGIN PARA ENTRAR Y VER LOS REGALOS-->
-
-</div>

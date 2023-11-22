@@ -90,7 +90,7 @@ if (isset($_REQUEST)) {
             ControladorRegalosNavidad::recogerDatosNuevoRegalo($idRegalo);
         }
 
-        //ENVIA LOS DATOS DEL NUEVO REGALO AL CONTROLADOR PARA QUE ESTE ORDENA AL MODELO INSERTARLOS EN LA BBDD
+        //ENVIA LOS DATOS DEL NUEVO REGALO AL CONTROLADOR PARA QUE ESTE ORDENE AL MODELO INSERTARLOS EN LA BBDD
         if (strcmp($_REQUEST["accion"], "enviarDatosNuevoRegalo") == 0) {
 
             
@@ -116,6 +116,12 @@ if (isset($_REQUEST)) {
             ControladorRegalosNavidad::modificarRegalo($idRegalo, $categoria, $nombre_articulo, $quien_recibe, $anio);
         }
 
+        if (strcmp($_REQUEST["accion"], "filtrar") == 0) {
+            $anio = $_REQUEST["anio"];
+            
+            $idUsuario = ControladorRegalosNavidad::idUsuario($_SESSION["nickname"]);
+            ControladorRegalosNavidad::obtenerRegalosPorAnio($anio, $idUsuario);
+        }
         
 
 

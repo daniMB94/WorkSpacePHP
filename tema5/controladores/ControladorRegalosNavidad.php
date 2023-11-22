@@ -115,4 +115,9 @@ class ControladorRegalosNavidad
 
         header("location: index.php");
     }
+
+    public static function obtenerRegalosPorAnio($anio, $idUsuario) {
+        $regalos = ModeloRegalosNavidad::obtenerRegalosPorAnio($anio, $idUsuario);
+        VistaRegalosUsuario::render($regalos);
+    }
 }

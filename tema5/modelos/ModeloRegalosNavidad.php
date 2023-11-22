@@ -64,6 +64,24 @@ class ModeloRegalosNavidad{
 
         $conexionObject->cerrarConexion();
     }
+
+    public static function obtenerRegalosPorAnio($anio, $idUsuario) {
+        $conexionObject = new ConexionBaseDeDatos();
+        $conexion = $conexionObject->getConexion();
+
+        $consulta = $conexion->prepare("SELECT * FROM Regalos WHERE idUsuario = :idUsuario AND anio = :anio");
+        $consulta->bindParam(":anio", $anio);
+        $consulta->bindParam(":idUsuario", $idUsuario);
+
+        $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'regalosNavidad\modelos\RegaloNavidad');
+        $consulta->execute();
+
+        $regalos = $consulta->fetchAll();
+
+        $conexionObject->cerrarConexion();
+
+        return $regalos;
+    }
 }
 
 ?>

@@ -16,22 +16,23 @@ class VistaRegalosUsuario
                         aria-expanded="true" aria-controls="collapseOne">
                         DESPLEGAR/ESCONDER REGALOS
                     </button>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Todos los años</option>
+                        <?php
+                        $arrayAnios = array();
+                        foreach ($regalos as $regalo) {
+                            if (!in_array($regalo->getAnio(), $arrayAnios)) {
+                                array_push($arrayAnios, $regalo->getAnio());
+                                echo "<option value='".$regalo->getAnio()."'>".$regalo->getAnio()."</option>";
+                            }
+                        }
+                        ?>
+                        
+
+                    </select>
                 </h2>
-                <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-                    <div class="col-md-6">
-                        <label for="anio" class="form-label">Año</label>
-                        <input type="number" class="form-control" name="anio">
-                    </div>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-2">
-                        <button class="btn btn-info" type="submit">Filtrar por año</button>
-                    </div>
-                </form>
 
                 <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    $anio = $_POST["anio"];
-
-                }
 
                 echo "<div id='collapseOne' class='accordion-collapse collapse show' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>";
                 echo "<div class='accordion-body'>";
@@ -49,25 +50,22 @@ class VistaRegalosUsuario
         </thead>
         <tbody>";
                 foreach ($regalos as $regalo) {
-                    if (!$filtrar) {
-                        if (strcmp($regalo->getAnio(), $anio) == 0) {
 
-                            echo "<div id='collapseOne' class='accordion-collapse collapse show' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>";
-                            echo "<div class='accordion-body'>";
-                            echo "<tr>";
-                            echo " <td>" . $regalo->getCategoria() . "</td>";
-                            echo " <td>" . $regalo->getNombre_articulo() . "</td>";
-                            echo " <td>" . $regalo->getQuien_recibe() . "</td>";
-                            echo " <td>" . $regalo->getAnio() . "</td>";
-                            echo "<td>";
-                            echo "<a href='index.php?accion=eliminarRegalo&idRegalo=" . $regalo->getId() . "'><button class='btn btn-danger'>X</button>";
-                            echo "<a href='index.php?accion=recogerDatosNuevoRegalo&idRegalo=" . $regalo->getId() . "'><button class='btn btn-light'>@</button>";
-                            echo "</td>";
-                            echo "</tr>";
-                            echo "</div>";
-                            echo "</div>";
-                        }
-                    }
+                    echo "<div id='collapseOne' class='accordion-collapse collapse show' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>";
+                    echo "<div class='accordion-body'>";
+                    echo "<tr>";
+                    echo " <td>" . $regalo->getCategoria() . "</td>";
+                    echo " <td>" . $regalo->getNombre_articulo() . "</td>";
+                    echo " <td>" . $regalo->getQuien_recibe() . "</td>";
+                    echo " <td>" . $regalo->getAnio() . "</td>";
+                    echo "<td>";
+                    echo "<a href='index.php?accion=eliminarRegalo&idRegalo=" . $regalo->getId() . "'><button class='btn btn-danger'>X</button>";
+                    echo "<a href='index.php?accion=recogerDatosNuevoRegalo&idRegalo=" . $regalo->getId() . "'><button class='btn btn-light'>@</button>";
+                    echo "</td>";
+                    echo "</tr>";
+                    echo "</div>";
+                    echo "</div>";
+
                 }
 
                 echo "</tbody>
