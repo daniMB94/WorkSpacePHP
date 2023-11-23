@@ -65,7 +65,7 @@ class vistaIncidencias
 
                 echo "</tbody>
             </table>";
-                echo "<a href='index.php?accion=recogerDatosNuevaIncidencia&idIncidencia'><button type='submit' class='btn btn-success'>Insertar Incidencia</button></a>";
+                echo "<a href='index.php?accion=recogerDatosNuevaIncidencia'><button type='submit' class='btn btn-success'>Insertar Incidencia</button></a>";
 
 
                 ?>

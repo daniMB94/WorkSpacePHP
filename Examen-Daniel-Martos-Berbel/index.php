@@ -5,7 +5,7 @@ namespace incidencias;
 
 use incidencias\Controlador\controladorIncidencias;
 
-session_start();
+
 
 //Autocargar clases
 spl_autoload_register(function ($class) {
@@ -21,17 +21,22 @@ if(isset($_REQUEST)){
         if(strcmp($_REQUEST["accion"], "recogerDatosNuevaIncidencia&idIncidencia")) {
             
         }
-
+        /*
         if(strcmp($_REQUEST["accion"], "borrarIncidencia" == 0)){
             $idIncidencia = $_REQUEST["idIncidencia"];
 
             controladorIncidencias::borrarIncidencia($idIncidencia);
-        }
+        }*/
         /*Este método del controlador sirve tanto para modificar como para insertar una incidencia.
         Lo único que hace es redirigirnos a un formulario para introducir los datos de la nueva incidencia o
         introducir los datos de la modificaicón*/
         if(strcmp($_REQUEST["accion"], "recogerDatosNuevaIncidencia" == 0)){
-            $idIncidencia = $_REQUEST["idIncidencia"];
+            
+            if (isset($_REQUEST["idIncidencia"])) {
+                $idIncidencia = $_REQUEST["idIncidencia"];//ESTA VARIABLE SE PASA CON EL ID DE LA INCIDENCIA
+            } else {
+                $idIncidencia = null;
+            }
 
             controladorIncidencias::modificar_o_nuevaIncidencia($idIncidencia);
         }
