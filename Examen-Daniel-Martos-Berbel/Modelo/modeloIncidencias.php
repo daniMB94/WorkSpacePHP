@@ -25,8 +25,8 @@ class modeloIncidencias {
         $conexionObject = new conexionBBDD();
         $conexion = $conexionObject->getConexion();
 
-        $consulta = $conexion->prepare("DELETE FROM IncidenciasClientes WHERE id = :id");
-        $consulta->bindParam(':id', $idIncidencia);
+        $consulta = $conexion->prepare("DELETE FROM Incidencia WHERE id = :id");
+        $consulta->bindParam(":id", $idIncidencia);
         $consulta->execute();
 
         $conexionObject->cerrarConexion();

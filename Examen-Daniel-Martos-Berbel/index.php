@@ -23,7 +23,7 @@ if(isset($_REQUEST)){
         }
 
         if(strcmp($_REQUEST["accion"], "borrarIncidencia" == 0)){
-            $idIncidencia = $_POST["idIncidencia"];
+            $idIncidencia = $_REQUEST["idIncidencia"];
 
             controladorIncidencias::borrarIncidencia($idIncidencia);
         }
