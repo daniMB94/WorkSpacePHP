@@ -18,12 +18,19 @@ spl_autoload_register(function ($class) {
 if(isset($_REQUEST)){
     if(isset($_REQUEST["accion"])){
     
-        if(strcmp($_REQUEST["accion"], "borrar")) {
+        if(strcmp($_REQUEST["accion"], "recogerDatosNuevaIncidencia&idIncidencia")) {
+            
+        }
 
+        if(strcmp($_REQUEST["accion"], "borrarIncidencia" == 0)){
+            $idIncidencia = $_POST["idIncidencia"];
+
+            controladorIncidencias::borrarIncidencia($idIncidencia);
         }
 
     } else {
-        controladorIncidencias::paginaPrincipal();
+        
+        controladorIncidencias::mostrarIncidencias();
     }
 }
 ?>
