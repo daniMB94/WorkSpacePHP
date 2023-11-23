@@ -15,4 +15,15 @@ spl_autoload_register(function ($class) {
     include_once "./" . $ruta . ".php";
 });
 //Fin autocargar
+if(isset($_REQUEST)){
+    if(isset($_REQUEST["accion"])){
+    
+        if(strcmp($_REQUEST["accion"], "borrar")) {
+
+        }
+
+    } else {
+        controladorIncidencias::paginaPrincipal();
+    }
+}
 ?>
