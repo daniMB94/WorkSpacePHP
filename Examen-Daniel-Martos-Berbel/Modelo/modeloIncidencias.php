@@ -31,5 +31,25 @@ class modeloIncidencias {
 
         $conexionObject->cerrarConexion();
     }
+
+    public static function actualizarIncidencia($idIncidencia, $latitud, $longitud, $ciudad, $direccion, $descripcion, $solucion, $estado){
+        $conexionObject = new conexionBBDD();
+        $conexion = $conexionObject->getConexion();
+
+        $consulta = $conexion->prepare("UPDATE Incidencia SET latitud = :latitud, longitud = :longitud, ciudad = :ciudad, direccion = :direccion, descripcion = :descripcion, solucion = :solucion, estado = :estado WHERE id = :id");
+        $consulta->bindParam(":latitud", $latitud);
+        $consulta->bindParam(":longitud", $longitud);
+        $consulta->bindParam(":ciudad", $ciudad);
+        $consulta->bindParam(":direccion", $direccion);
+        $consulta->bindParam(":descripcion", $descripcion);
+        $consulta->bindParam(":solucion", $solucion);
+        $consulta->bindParam(":estado", $estado);
+        $consulta->bindParam(":id", $idIncidencia);
+
+        $consulta->execute();
+
+        $conexionObject->cerrarConexion();
+    }
+
 }
 ?>
