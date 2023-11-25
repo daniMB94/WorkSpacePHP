@@ -19,8 +19,6 @@
   if (isset($_SESSION['nickname'])) {
     echo "<p class='text-white me-4'><u>Logueado como ".$_SESSION['nickname']."</u></p>";
     echo "<a href='index.php?accion=cerrarSesion'><button type='submit' class='btn btn-warning'>cerrar sesion</button></a>";
-  } else {
-    echo "<h1>HAY QUE LOGUEARSE</h1>";
   }
 
 ?>
