@@ -13,6 +13,8 @@ use regalosNavidad\modelos\RegaloNavidad;
 use regalosNavidad\vistas\VistaRegalosUsuario;
 use regalosNavidad\vistas\VistaErrorSignIn;
 use regalosNavidad\vistas\VistaRecogerDatosNuevoRegalo;
+use regalosNavidad\modelos\ModeloEnlace;
+use regalosNavidad\vistas\VistaDetalle;
 
 
 
@@ -119,5 +121,10 @@ class ControladorRegalosNavidad
     public static function obtenerRegalosPorAnio($anio, $idUsuario) {
         $regalos = ModeloRegalosNavidad::obtenerRegalosPorAnio($anio, $idUsuario);
         VistaRegalosUsuario::render($regalos);
+    }
+
+    public static function consultarDetalle($idRegalo) {
+        $enlaces = ModeloEnlace::obtenerEnlacesRegalo($idRegalo);
+        VistaDetalle::render($enlaces);
     }
 }

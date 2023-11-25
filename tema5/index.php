@@ -122,6 +122,12 @@ if (isset($_REQUEST)) {
             $idUsuario = ControladorRegalosNavidad::idUsuario($_SESSION["nickname"]);
             ControladorRegalosNavidad::obtenerRegalosPorAnio($anio, $idUsuario);
         }
+
+        if (strcmp($_REQUEST["accion"], "detalle") == 0) {
+            $idRegalo = $_REQUEST["idRegalo"];
+
+            ControladorRegalosNavidad::consultarDetalle($idRegalo);
+        }
         
 
 

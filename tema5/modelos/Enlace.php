@@ -6,12 +6,14 @@ class Enlace
 {
 
     private $id;
+    private $idRegalo;
     private $url;
     private $precio;
 
-    public function __construct($id = "", $url = "", $precio = "")
+    public function __construct($id = "", $idRegalo = "", $url = "", $precio = "")
     {
         $this->id = $id;
+        $this->idRegalo = $idRegalo;
         $this->url = $url;
         $this->precio = $precio;
     }
@@ -27,6 +29,18 @@ class Enlace
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
+    }
+    public function getIdRegalo()
+    {
+        return $this->idRegalo;
+    }
+    /**
+     * @return self
+     */
+    public function setIdRegalo($idRegalo)
+    {
+        $this->idRegalo = $idRegalo;
         return $this;
     }
     public function getUrl()
