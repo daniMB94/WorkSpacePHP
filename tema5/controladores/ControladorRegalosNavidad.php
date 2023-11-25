@@ -119,12 +119,25 @@ class ControladorRegalosNavidad
     }
 
     public static function obtenerRegalosPorAnio($anio, $idUsuario) {
+        if(!strcmp(($anio), "Todos los años") == 0) {
         $regalos = ModeloRegalosNavidad::obtenerRegalosPorAnio($anio, $idUsuario);
         VistaRegalosUsuario::render($regalos);
+        } else {
+            header("location:index.php");
+        }
     }
 
     public static function consultarDetalle($idRegalo) {
         $enlaces = ModeloEnlace::obtenerEnlacesRegalo($idRegalo);
-        VistaDetalle::render($enlaces);
+        VistaDetalle::render($enlaces, $idRegalo);
+    }
+
+    public static function insertarEnlace($idRegalo, $url, $precio) {
+        ModeloEnlace::insertarEnlace($idRegalo, $url, $precio);
+        header("location: index.php");
+    }
+    public static function eliminarEnlace($idEnlace) {
+        ModeloEnlace::eliminarEnlace($idEnlace);
+        header("location: index.php?accion=detalle&idRegalo=");
     }
 }

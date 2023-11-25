@@ -21,5 +21,33 @@ class ModeloEnlace{
 
         return $enlaces;
     }
+    public static function insertarEnlace($idRegalo, $url, $precio){
+        $conexionObject = new ConexionBaseDeDatos();
+        $conexion = $conexionObject->getConexion();
+
+        $consulta = $conexion->prepare("INSERT INTO Enlaces(idRegalo, url, precio) VALUES (?, ?, ?)");
+        $consulta->bindValue(1, $idRegalo);
+        $consulta->bindValue(2, $url);
+        $consulta->bindValue(3, $precio);
+
+        $consulta->execute();
+
+        $conexionObject->cerrarConexion();
+
+    }
+    public static function eliminarEnlace($idEnlace) {
+        $conexionObject = new ConexionBaseDeDatos();
+        $conexion = $conexionObject->getConexion();
+
+        $consulta = $conexion->prepare("DELETE FROM Enlaces WHERE id = :idEnlace");
+        $consulta->bindParam(":idEnlace", $idEnlace);
+
+        $idRegalo = $consulta->prepare("SELECT DISTINCT idRegalo FROM Enlaces WHERE id = :idEnlace");
+
+        $consulta->execute();
+
+        $conexionObject->cerrarConexion();
+    }
+
 }
 ?>

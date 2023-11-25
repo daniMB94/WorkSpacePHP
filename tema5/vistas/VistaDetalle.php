@@ -3,7 +3,7 @@ namespace regalosNavidad\vistas;
 
 class VistaDetalle
 {
-    public static function render($enlaces)
+    public static function render($enlaces, $idRegalo)
     {
         include("cabeceraPrincipal.php");
         ?>
@@ -34,7 +34,7 @@ class VistaDetalle
                 </div>
             </div>
         </div>
-        <a href="index.php?accion=nuevoEnlace"><button type='submit'
+        <a href="index.php?accion=nuevoEnlace&idRegalo=<?= $idRegalo ?>"><button type='submit'
                 class='btn btn-success'>Insertar Enlace</button></a>
 
 

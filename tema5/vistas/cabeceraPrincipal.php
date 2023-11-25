@@ -13,11 +13,11 @@
 <body>
 
   <header class="vh-50 bg-primary mb-2 p-4">
-<h1>CABECERA</h1>
+<h1 style="text-align: center; color: white">Aplicacion de regalos</h1>
 <?php
 
   if (isset($_SESSION['nickname'])) {
-    echo "<p>".$_SESSION['nickname']."</p>";
+    echo "<p class='text-white me-4'><u>Logueado como ".$_SESSION['nickname']."</u></p>";
     echo "<a href='index.php?accion=cerrarSesion'><button type='submit' class='btn btn-warning'>cerrar sesion</button></a>";
   } else {
     echo "<h1>HAY QUE LOGUEARSE</h1>";

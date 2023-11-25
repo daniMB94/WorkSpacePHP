@@ -63,7 +63,7 @@ class VistaRegalosUsuario
                     echo " <td>" . $regalo->getAnio() . "</td>";
                     echo "<td>";
                     echo "<a href='index.php?accion=eliminarRegalo&idRegalo=" . $regalo->getId() . "'><button class='btn btn-danger'>X</button>";
-                    echo "<a href='index.php?accion=recogerDatosNuevoRegalo&idRegalo=" . $regalo->getId() . "'><button class='btn btn-light border border-dark mx-2'>@</button>";
+                    echo "<a href='index.php?accion=recogerDatosNuevoRegalo&idRegalo=" . $regalo->getId() . "'><button class='btn btn-light border border-dark mx-2'>Editar</button>";
                     echo "<a href='index.php?accion=detalle&idRegalo=" .$regalo->getId() . "'><button class='btn btn-info'>Detalle</button>";
                     echo "</td>";
                     echo "</tr>";

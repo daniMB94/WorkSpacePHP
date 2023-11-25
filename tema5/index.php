@@ -4,6 +4,7 @@
 namespace regalosNavidad;
 
 use regalosNavidad\controladores\ControladorRegalosNavidad;
+use regalosNavidad\vistas\VistaNuevoEnlace;
 
 session_start();
 
@@ -131,7 +132,22 @@ if (isset($_REQUEST)) {
 
         if (strcmp($_REQUEST["accion"], "nuevoEnlace") == 0) {
 
-           VistaNuevoEnlace::render();
+            $idRegalo = $_REQUEST["idRegalo"];
+            VistaNuevoEnlace::render($idRegalo);
+        }
+
+        if (strcmp($_REQUEST["accion"], "enviarDatosNuevoEnlace") == 0) {
+            $idRegalo = $_REQUEST["idRegalo"];
+            $url = $_REQUEST["url"];
+            $precio = $_REQUEST["precio"];
+
+            ControladorRegalosNavidad::insertarEnlace($idRegalo, $url, $precio);
+        }
+
+        if (strcmp($_REQUEST["accion"], "eliminarEnlace") == 0) {
+            $idEnlace = $_REQUEST["idEnlace"];
+
+            ControladorRegalosNavidad::eliminarEnlace($idEnlace);
         }
         
 
