@@ -16,7 +16,8 @@ class VistaRegalosUsuario
                         aria-expanded="true" aria-controls="collapseOne">
                         DESPLEGAR/ESCONDER REGALOS
                     </button>
-                    <select class="form-select" aria-label="Default select example">
+                    <form action="index.php" method="post">
+                    <select class="form-select" name="anio" aria-label="Default select example">
                         <option selected>Todos los años</option>
                         <?php
                         $arrayAnios = array();
@@ -30,6 +31,8 @@ class VistaRegalosUsuario
                         
 
                     </select>
+                    <button class="btn btn-light border border-dark" type="submit" name="accion" value="filtrar">Filtrar</button>
+                    </form>
                 </h2>
 
                 <?php

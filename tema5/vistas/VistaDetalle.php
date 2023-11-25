@@ -6,32 +6,41 @@ class VistaDetalle
     public static function render($enlaces)
     {
         include("cabeceraPrincipal.php");
-
-        echo "<div class='row'>";
-
-        echo "<div class='col-4'>";
-        echo "<div class='card' style='width: 18rem;''>";
-        echo "<div class='card-header'>";
-        echo "Enlaces";
-        echo "</div>";   
-        echo "<ul class='list-group list-group-flush'>";
-
-        foreach($enlaces as $enlace) {
-            echo "<li class='list-group-item'><a href='". $enlace->getUrl(). "'>". $enlace->getUrl(). "</a> - PRECIO: ". $enlace->getPrecio(). "</li>";
-        }
-
-        echo "</ul>";
-        echo "</div>";
-
-        echo "<div class='col-8'>";
+        ?>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class='card col-6'>
+                    <div class='card-header'>
+                        Enlaces
+                    </div>
 
 
-        echo "</div>";
+                    <?php
+                    if (sizeof($enlaces) > 0) {
+                        echo "<ul class='list-group list-group-flush'>";
+                        foreach ($enlaces as $enlace) {
+                            echo "<li class='list-group-item row justify-content-around'><a href='https://" . $enlace->getUrl() . "' target='_blank'>" . $enlace->getUrl() . "</a> - PRECIO: " . $enlace->getPrecio() . "<a href='index.php?accion=eliminarEnlace&idEnlace=" . $enlace->getId() . "'><button class='btn btn-danger'>X</button></a></li>";
+                            
 
-        echo "</div>";
+                        }
+                        echo "</ul>";
+                    } else {
+                        echo "<p>No hay ningun enlace para este regalo </p>";
+
+                    }
+
+                    ?>
+
+                </div>
+            </div>
+        </div>
+        <a href="index.php?accion=nuevoEnlace"><button type='submit'
+                class='btn btn-success'>Insertar Enlace</button></a>
+
+
+        <?php
 
         include("pie.php");
     }
 }
 ?>
-<a href=""></a>

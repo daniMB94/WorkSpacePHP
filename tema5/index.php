@@ -128,6 +128,11 @@ if (isset($_REQUEST)) {
 
             ControladorRegalosNavidad::consultarDetalle($idRegalo);
         }
+
+        if (strcmp($_REQUEST["accion"], "nuevoEnlace") == 0) {
+
+           VistaNuevoEnlace::render();
+        }
         
 
 
