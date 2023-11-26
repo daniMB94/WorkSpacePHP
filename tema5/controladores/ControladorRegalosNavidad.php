@@ -137,7 +137,8 @@ class ControladorRegalosNavidad
         header("location: index.php");
     }
     public static function eliminarEnlace($idEnlace) {
-        ModeloEnlace::eliminarEnlace($idEnlace);
-        header("location: index.php?accion=detalle&idRegalo=");
+        $idRegalo = ModeloEnlace::eliminarEnlace($idEnlace);
+        
+        //self::consultarDetalle($idRegalo);
     }
 }

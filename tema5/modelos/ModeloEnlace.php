@@ -42,8 +42,6 @@ class ModeloEnlace{
         $consulta = $conexion->prepare("DELETE FROM Enlaces WHERE id = :idEnlace");
         $consulta->bindParam(":idEnlace", $idEnlace);
 
-        $idRegalo = $consulta->prepare("SELECT DISTINCT idRegalo FROM Enlaces WHERE id = :idEnlace");
-
         $consulta->execute();
 
         $conexionObject->cerrarConexion();

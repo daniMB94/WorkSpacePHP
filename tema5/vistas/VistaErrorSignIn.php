@@ -2,10 +2,21 @@
 
 namespace regalosNavidad\vistas;
 
-class VistaErrorSignIn{
-    public static function render(){
+class VistaErrorSignIn
+{
+    public static function render()
+    {
         include("cabeceraPrincipal.php");
-        include("errorLogin.php");
+        ?>
+        <div class="alert alert-danger" role="alert">
+
+            <form action="index.php" method="post">
+                <p>Usuario o contraseña incorrecta. <button type="submit" name="paginaPrincipal" class="alert alert-danger"
+                        style="border: none"><a class="alert-link">Volver a la página principal</a></button></p>
+            </form>
+        </div>
+
+        <?php
         include("pie.php");
     }
 }
