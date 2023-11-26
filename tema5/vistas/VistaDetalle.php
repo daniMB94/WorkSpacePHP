@@ -20,7 +20,7 @@ class VistaDetalle
                         echo "<ul class='list-group list-group-flush'>";
                         foreach ($enlaces as $enlace) {
                             echo "<li class='list-group-item row justify-content-around'><a href='https://" . $enlace->getUrl() . "' target='_blank'>" . $enlace->getUrl() . "</a> - PRECIO: " . $enlace->getPrecio() . "<a href='index.php?accion=eliminarEnlace&idEnlace=" . $enlace->getId() . "'><button class='btn btn-danger'>X</button></a></li>";
-                            
+
 
                         }
                         echo "</ul>";
@@ -34,8 +34,9 @@ class VistaDetalle
                 </div>
             </div>
         </div>
-        <a href="index.php?accion=nuevoEnlace&idRegalo=<?= $idRegalo ?>"><button type='submit'
-                class='btn btn-success'>Insertar Enlace</button></a>
+        <a href="index.php?accion=nuevoEnlace&idRegalo=<?= $idRegalo ?>"><button type='submit' class='btn btn-success'>Insertar
+                Enlace</button></a>
+        <a href="index.php"><button type='submit' class='btn btn-light border border-dark mx-2'>Volver a la vista de regalos</button></a>
 
 
         <?php
