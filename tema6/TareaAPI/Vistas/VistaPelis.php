@@ -48,7 +48,9 @@ class VistaPelis
                                             lead-in to additional content. This content is a little bit longer.</p>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                                <a href="index.php?accion=detallesPeli&idPeli=<?= $serie->id ?>"><button
+                                                        type="button" class="btn btn-sm btn-outline-secondary">Ver
+                                                        Detalles</button></a>
                                                 <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                                             </div>
                                             <small class="text-muted">9 mins</small>
