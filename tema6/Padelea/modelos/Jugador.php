@@ -1,6 +1,6 @@
 <?php
 
-namespace Padelea;
+namespace Padelea\modelos;
 
 class Jugador
 {
@@ -30,11 +30,12 @@ class Jugador
      * @return self
      */
 
-     public function setIdJugador($idJugador){
+    public function setIdJugador($idJugador)
+    {
         $this->idJugador = $idJugador;
         return $this;
-     }
-     public function getEmail()
+    }
+    public function getEmail()
     {
         return $this->email;
     }
@@ -43,12 +44,13 @@ class Jugador
      * @return self
      */
 
-     public function setEmail($email){
+    public function setEmail($email)
+    {
         $this->email = $email;
         return $this;
-     }
+    }
 
-     public function getPasswordC()
+    public function getPasswordC()
     {
         return $this->passwordC;
     }
@@ -57,11 +59,12 @@ class Jugador
      * @return self
      */
 
-     public function setPasswordC($passwordC){
+    public function setPasswordC($passwordC)
+    {
         $this->passwordC = $passwordC;
         return $this;
-     }
-     public function getNombre()
+    }
+    public function getNombre()
     {
         return $this->nombre;
     }
@@ -70,11 +73,12 @@ class Jugador
      * @return self
      */
 
-     public function setNombre($nombre){
+    public function setNombre($nombre)
+    {
         $this->nombre = $nombre;
         return $this;
-     }
-     public function getApodo()
+    }
+    public function getApodo()
     {
         return $this->apodo;
     }
@@ -83,23 +87,25 @@ class Jugador
      * @return self
      */
 
-     public function setApodo($apodo){
+    public function setApodo($apodo)
+    {
         $this->apodo = $apodo;
         return $this;
-     }
-     public function getNivel()
-     {
-         return $this->nivel;
-     }
- 
-     /**
-      * @return self
-      */
- 
-      public function setNivel($nivel){
-         $this->nivel = $nivel;
-         return $this;
-      }
+    }
+    public function getNivel()
+    {
+        return $this->nivel;
+    }
+
+    /**
+     * @return self
+     */
+
+    public function setNivel($nivel)
+    {
+        $this->nivel = $nivel;
+        return $this;
+    }
 }
 
 ?>

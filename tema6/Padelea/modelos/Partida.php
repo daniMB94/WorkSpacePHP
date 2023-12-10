@@ -1,6 +1,6 @@
 <?php
 
-namespace Padelea;
+namespace Padelea\modelos;
 
 class Partida
 {

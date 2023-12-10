@@ -39,6 +39,25 @@ class ModeloJugador
 
         return $jugadores;
     }
+
+    public static function comprobarExistenciaJugador($apodo)
+    {
+        $conexionObject = new ConexionBBDD();
+        $conexion = $conexionObject->getConexion();
+
+        $consulta = $conexion->prepare("SELECT apodo FROM jugadores WHERE apodo LIKE :apodo");
+        $consulta->bindParam(":apodo", $apodo);
+        $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Padelea\modelos\Jugador');
+        $consulta->execute();
+
+        $jugador = $consulta->fetchAll();
+
+        if (sizeof($jugador) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>
