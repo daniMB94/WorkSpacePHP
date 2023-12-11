@@ -24,40 +24,25 @@ class ModeloJugador
         $conexionObject->cerrarConexion();
     }
 
-    public static function mostarJugador()
-    {
-        $conexionObject = new ConexionBBDD();
-        $conexion = $conexionObject->getConexion();
-
-        $consulta = $conexion->prepare("SELECT * FROM jugadores");
-        $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Padelea\modelos\Jugador");
-        $consulta->execute();
-
-        $jugadores = $consulta->fetchAll();
-
-        $conexionObject->cerrarConexion();
-
-        return $jugadores;
-    }
 
     public static function comprobarExistenciaJugador($apodo)
     {
         $conexionObject = new ConexionBBDD();
         $conexion = $conexionObject->getConexion();
 
-        $consulta = $conexion->prepare("SELECT apodo FROM jugadores WHERE apodo LIKE :apodo");
+        $consulta = $conexion->prepare("SELECT * FROM jugadores WHERE apodo LIKE :apodo");
         $consulta->bindParam(":apodo", $apodo);
         $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Padelea\modelos\Jugador');
         $consulta->execute();
 
-        $jugador = $consulta->fetchAll();
+        $jugador = $consulta->fetch();
 
-        if (sizeof($jugador) > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        $conexionObject->cerrarConexion();
+
+        return $jugador;
     }
+
+
 }
 
 ?>

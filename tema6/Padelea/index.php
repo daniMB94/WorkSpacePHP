@@ -4,9 +4,11 @@ namespace Padelea;
 
 use Padelea\controladores\ControladorJugador;
 use Padelea\vistas\VistaPadelea;
-use Padelea\vistas\VistaPartidas;
+use Padelea\controladores\ControladorPartida;
+
 
 session_start();
+//session_destroy();
 
 //Autocargar clases
 spl_autoload_register(function ($class) {
@@ -21,25 +23,33 @@ spl_autoload_register(function ($class) {
 if (isset($_REQUEST)) {
     if (isset($_REQUEST["accion"])) {
 
-        if (strcmp($_REQUEST["accion"], "mostrarJugador") == 0) {
-
-
-        }
         if (strcmp($_REQUEST["accion"], "login") == 0) {
             $apodo = $_REQUEST["apodo"];
-            if (ControladorJugador::comprobarExistenciaJugador($apodo)) {
-                $_SESSION["apodo"] = $apodo;
-                VistaPartidas::render();
+            $passwordC = $_REQUEST["passwordC"];
+            //Comprobamos que ese apodo existe en la base de datos
+
+            //Mostramos todas las partidas y toda su información si el jugador existe en la BBDD y su contraseña es correcta
+            $existe = ControladorJugador::comprobarExistenciaJugador($apodo, $passwordC);
+            if ($existe) {
+
+                ControladorPartida::todasLasPartidas();
             } else {
-                // VistaError::usuarioNoRegistradoRender();
-                echo "ERROR";
+
+                VistaPadelea::renderInicio();
             }
-            ;
+
 
         }
         if (strcmp($_REQUEST["accion"], "cerrarSesion") == 0) {
-            session_destroy();
+            ControladorJugador::cerrarSesion();
         }
+        if (strcmp($_REQUEST["accion"], "eliminarPartida") == 0) {
+
+            $idPartida = $_REQUEST["idPartida"];
+            ControladorPartida::eliminarPartida($idPartida);
+        }
+    } else if (isset($_SESSION["jugador"])) {
+        ControladorPartida::todasLasPartidas();
     } else {
         VistaPadelea::renderInicio();
     }

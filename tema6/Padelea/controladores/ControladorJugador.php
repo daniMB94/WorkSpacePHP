@@ -2,18 +2,42 @@
 
 namespace Padelea\controladores;
 
-use Padelea\modelos\modeloJugador;
+use Padelea\modelos\ModeloJugador;
+
 
 class ControladorJugador
 {
-    public static function mostrarJugador()
-    {
-        return ModeloJugador::mostarJugador();
-    }
 
-    public static function comprobarExistenciaJugador($apodo)
+
+    public static function comprobarExistenciaJugador($apodo, $passwordC)
     {
-        return ModeloJugador::comprobarExistenciaJugador($apodo);
+        if (ModeloJugador::comprobarExistenciaJugador($apodo) != false) {
+
+            $jugador = ModeloJugador::comprobarExistenciaJugador($apodo);
+
+            if ($jugador->getPasswordC() == $passwordC) {
+                $_SESSION["jugador"] = serialize($jugador);
+                return true;
+            } else {
+                echo "Contraseña incorrecta";
+
+            }
+
+
+
+
+        } else {
+
+            echo "ERROR. Ese usuario no está registrado";
+
+        }
+
+    }
+    public static function cerrarSesion()
+    {
+        session_destroy();
+
+        header("location: index.php");
     }
 }
 

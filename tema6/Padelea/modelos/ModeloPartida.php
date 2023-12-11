@@ -5,7 +5,7 @@ namespace Padelea\modelos;
 use Padelea\modelos\ConexionBBDD;
 use PDO;
 
-class ModelosPartida
+class ModeloPartida
 {
         public static function insertarJugadorAPartida($fecha, $hora, $ciudad, $lugar, $cubierto, $estado, $posicionJugador, $jugador)
         {
@@ -39,6 +39,51 @@ class ModelosPartida
                 }
 
 
+        }
+        public static function todasLasPartidas()
+        {
+                $conexionObject = new ConexionBBDD();
+                $conexion = $conexionObject->getConexion();
+
+                $consulta = $conexion->prepare("SELECT * FROM partidas ORDER BY fecha");
+                $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Padelea\modelos\Partida");
+                $consulta->execute();
+
+                $partidas = $consulta->fetchAll();
+
+                $conexionObject->cerrarConexion();
+
+                return $partidas;
+
+        }
+
+        public static function partidaSeleccionada($idPartida)
+        {
+                $conexionObject = new ConexionBBDD();
+                $conexion = $conexionObject->getConexion();
+
+                $consulta = $conexion->prepare("SELECT * FROM partidas WHERE idPartida LIKE :idPartida");
+                $consulta->bindParam(":idPartida", $idPartida);
+                $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Padelea\modelos\Partida");
+                $consulta->execute();
+
+                $partida = $consulta->fetch();
+
+                $conexionObject->cerrarConexion();
+
+                return $partida;
+        }
+
+        public static function eliminarPartida($idPartida)
+        {
+                $conexionObject = new ConexionBBDD();
+                $conexion = $conexionObject->getConexion();
+
+                $consulta = $conexion->prepare("DELETE FROM partidas WHERE idPartida LIKE :idPartida");
+                $consulta->bindParam(":idPartida", $idPartida);
+                $consulta->execute();
+
+                $conexionObject->cerrarConexion();
         }
 }
 
