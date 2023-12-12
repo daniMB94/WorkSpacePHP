@@ -69,7 +69,7 @@ class AmigoInvisible
         $this->estado = $estado;
         return $this;
     }
-    public function getMaxio_dinero()
+    public function getMaximo_dinero()
     {
         return $this->maximo_dinero;
     }
@@ -83,7 +83,7 @@ class AmigoInvisible
         $this->maximo_dinero = $maximo_dinero;
         return $this;
     }
-    public function getFechaTope()
+    public function getFecha_tope()
     {
         return $this->fecha_tope;
     }

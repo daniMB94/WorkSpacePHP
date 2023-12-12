@@ -16,8 +16,8 @@
             <h1 style="text-align: center; color: white">App Amigo Invisible</h1>
             <?php
 
-            if (isset($_SESSION['activo'])) {
-                echo "<p class='text-white me-4'><u><strong style='color: green'>On-line</strong></u></p>";
+            if (($_SESSION['activo'])) {
+                echo "<p class='text-white me-4'><u><strong style='color: white'>On-line</strong></u></p>";
                 echo "<a href='index.php?accion=salir'><button type='submit' class='btn btn-warning'>Salir</button></a>";
             }
 
