@@ -42,7 +42,12 @@ class VistaPartidas
                 echo " <td>Bajo techo</td>";
             }
             ;
-            echo " <td>" . $partida->getEstado() . "</td>";
+            if ($partida->getEstado()) {
+                echo "<td>Partida Abierta</td>";
+
+            } else {
+                echo "<td><strong>Partida Cerrada</strong></td>";
+            }
             if (strcmp($apodosPartidas[$partida->getIdPartida()][0], "Hueco libre") == 0) {
                 echo "<td><strong style='color: green;'>Hueco libre</strong></td>";
             } else {
@@ -71,9 +76,9 @@ class VistaPartidas
             echo "<a href='index.php?accion=eliminarPartida&idPartida=" . $partida->getIdPartida() . "'><button
                                         class='btn btn-danger'>X</button>";
             echo "<a
-                                        href='index.php?accion=recogerDatosNuevoRegalo&idRegalo=" . $partida->getIdPartida() . "'><button
+                                        href='index.php?accion=recogerDatosNuevoRegalo&idPartida=" . $partida->getIdPartida() . "'><button
                                             class='btn btn-light border border-dark mx-2'>Editar</button>";
-            echo "<a href='index.php?accion=detalle&idRegalo=" . $partida->getIdPartida() . "'><button
+            echo "<a href='index.php?accion=detalle&idPartida=" . $partida->getIdPartida() . "'><button
                                                 class='btn btn-info'>Detalle</button>";
             echo "</td>";
             echo "</tr>";

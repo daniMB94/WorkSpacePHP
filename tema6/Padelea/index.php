@@ -48,6 +48,12 @@ if (isset($_REQUEST)) {
             $idPartida = $_REQUEST["idPartida"];
             ControladorPartida::eliminarPartida($idPartida);
         }
+
+        if (strcmp($_REQUEST["accion"], "detalle") == 0) {
+            $idPartida = $_REQUEST["idPartida"];
+            VistaDetalle::render($idPartida);
+        }
+
     } else if (isset($_SESSION["jugador"])) {
         ControladorPartida::todasLasPartidas();
     } else {
