@@ -4,7 +4,7 @@ namespace Padelea\vistas;
 
 class VistaPartidas
 {
-    public static function render($partidas)
+    public static function render($partidas, $apodosPartidas)
     {
         include("cabecera.php");
         echo "
@@ -21,12 +21,14 @@ class VistaPartidas
                     <th>Jugador 2</th>
                     <th>Jugador 3</th>
                     <th>Jugador 4</th>
-
+                    <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>";
 
         foreach ($partidas as $partida) {
+
+            //Sacamos un array con los apodos de los jugadores de la partida
 
 
             echo "<tr>";
@@ -34,12 +36,37 @@ class VistaPartidas
             echo " <td>" . $partida->getHora() . "</td>";
             echo " <td>" . $partida->getCiudad() . "</td>";
             echo " <td>" . $partida->getLugar() . "</td>";
-            echo " <td>" . $partida->getCubierto() . "</td>";
+            if ($partida->getCubierto()) {
+                echo "<td>Al aire libre</td>";
+            } else {
+                echo " <td>Bajo techo</td>";
+            }
+            ;
             echo " <td>" . $partida->getEstado() . "</td>";
-            echo " <td>" . $partida->getIdj1() . "</td>";
-            echo " <td>" . $partida->getIdj2() . "</td>";
-            echo " <td>" . $partida->getIdj3() . "</td>";
-            echo " <td>" . $partida->getIdj4() . "</td>";
+            if (strcmp($apodosPartidas[$partida->getIdPartida()][0], "Hueco libre") == 0) {
+                echo "<td><strong style='color: green;'>Hueco libre</strong></td>";
+            } else {
+                echo " <td>" . $apodosPartidas[$partida->getIdPartida()][0] . "</td>";
+            }
+            ;
+            if (strcmp($apodosPartidas[$partida->getIdPartida()][1], "Hueco libre") == 0) {
+                echo "<td><strong style='color: green;'>Hueco libre</strong></td>";
+            } else {
+                echo " <td>" . $apodosPartidas[$partida->getIdPartida()][1] . "</td>";
+            }
+            ;
+            if (strcmp($apodosPartidas[$partida->getIdPartida()][2], "Hueco libre") == 0) {
+                echo "<td><strong style='color: green;'>Hueco libre</strong></td>";
+            } else {
+                echo " <td>" . $apodosPartidas[$partida->getIdPartida()][2] . "</td>";
+            }
+            ;
+            if (strcmp($apodosPartidas[$partida->getIdPartida()][3], "Hueco libre") == 0) {
+                echo "<td><strong style='color: green;'>Hueco libre</strong></td>";
+            } else {
+                echo " <td>" . $apodosPartidas[$partida->getIdPartida()][3] . "</td>";
+            }
+            ;
             echo "<td>";
             echo "<a href='index.php?accion=eliminarPartida&idPartida=" . $partida->getIdPartida() . "'><button
                                         class='btn btn-danger'>X</button>";

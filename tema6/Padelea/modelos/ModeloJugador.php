@@ -3,6 +3,7 @@
 namespace Padelea\modelos;
 
 use Padelea\modelos\ConexionBBDD;
+use Padelea\modelos\Jugador;
 use PDO;
 
 class ModeloJugador
@@ -32,6 +33,23 @@ class ModeloJugador
 
         $consulta = $conexion->prepare("SELECT * FROM jugadores WHERE apodo LIKE :apodo");
         $consulta->bindParam(":apodo", $apodo);
+        $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Padelea\modelos\Jugador');
+        $consulta->execute();
+
+        $jugador = $consulta->fetch();
+
+        $conexionObject->cerrarConexion();
+
+        return $jugador;
+    }
+
+    public static function obtenerApodo($idJugador)
+    {
+        $conexionObject = new ConexionBBDD();
+        $conexion = $conexionObject->getConexion();
+
+        $consulta = $conexion->prepare("SELECT * FROM jugadores WHERE idJugador LIKE :idJugador");
+        $consulta->bindParam(":idJugador", $idJugador);
         $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Padelea\modelos\Jugador');
         $consulta->execute();
 

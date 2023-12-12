@@ -20,17 +20,28 @@ class ControladorJugador
                 return true;
             } else {
                 echo "Contraseña incorrecta";
-
             }
 
-
-
-
         } else {
-
             echo "ERROR. Ese usuario no está registrado";
+        }
+    }
+
+    public static function jugadoresDeLaPartida($idJugadoresPartida)
+    {
+        $apodos = array();
+        for ($i = 0; $i <= 3; $i++) {
+            if (is_numeric($idJugadoresPartida[$i])) {
+                $jugador = ModeloJugador::obtenerApodo($idJugadoresPartida[$i]);
+                $apodo = $jugador->getApodo();
+                array_push($apodos, $apodo);
+            } else {
+                array_push($apodos, "Hueco libre");
+            }
 
         }
+        return $apodos;
+
 
     }
     public static function cerrarSesion()

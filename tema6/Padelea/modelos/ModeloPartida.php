@@ -85,6 +85,27 @@ class ModeloPartida
 
                 $conexionObject->cerrarConexion();
         }
+
+        public static function actualizarEstado($idPartida, $booleano)
+        {
+                if ($booleano) {
+                        $estado = 1;
+                } else {
+                        $estado = 0;
+                }
+
+
+                $conexionObject = new ConexionBBDD();
+                $conexion = $conexionObject->getConexion();
+
+                $consulta = $conexion->prepare("UPDATE partidas SET estado = :estado WHERE idPartida = :idPartida");
+                $consulta->bindParam(":estado", $estado);
+                $consulta->bindParam(":idPartida", $idPartida);
+                $consulta->execute();
+
+                $conexionObject->cerrarConexion();
+
+        }
 }
 
 
