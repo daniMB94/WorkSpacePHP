@@ -39,6 +39,18 @@ class ModeloAmigoInvisible
 
         return $amigoInvisible;
     }
+
+    public static function eliminarAmigoInvisible($idAmigoInvisible)
+    {
+        $conexionObject = new ConexionBBDD();
+        $conexion = $conexionObject->getConexion();
+
+        $consulta = $conexion->prepare("DELETE FROM AmigosInvisibles WHERE id = :id");
+        $consulta->bindParam(":id", $idAmigoInvisible);
+        $consulta->execute();
+
+        $conexionObject->cerrarConexion();
+    }
 }
 
 ?>

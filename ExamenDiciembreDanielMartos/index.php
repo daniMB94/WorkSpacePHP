@@ -39,6 +39,11 @@ if (isset($_REQUEST)) {
 
         }
 
+        if (strcmp($_REQUEST["accion"], "eliminarAmigoInvisible") == 0) {
+            $idAmigoInvisible = $_REQUEST["idAmigoInvisible"];
+            ControladorAmigoInvisible::eliminarAmigoInvisible($idAmigoInvisible);
+        }
+
     } else {
         VistaInicio::render();
     }

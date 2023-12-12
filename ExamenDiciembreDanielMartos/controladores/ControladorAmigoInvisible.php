@@ -47,6 +47,13 @@ class ControladorAmigoInvisible
         VistaParticipantesDeAmigoInvisible::render($amigoInvisible);
 
     }
+
+    public static function eliminarAmigoInvisible($idAmigoInvisible)
+    {
+        ModeloAmigoInvisible::eliminarAmigoInvisible($idAmigoInvisible);
+
+        self::seleccionarTodosLosAmigosInvisibles();
+    }
 }
 
 
