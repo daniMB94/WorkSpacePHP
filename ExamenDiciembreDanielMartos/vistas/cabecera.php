@@ -18,7 +18,11 @@
 
             if (($_SESSION['activo'])) {
                 echo "<p class='text-white me-4'><u><strong style='color: white'>On-line</strong></u></p>";
+                echo "<div style:'display: flex; flex-direction:row; justify-content: start'>";
                 echo "<a href='index.php?accion=salir'><button type='submit' class='btn btn-warning'>Salir</button></a>";
+                echo "<a href='index.php?accion=entrar' style='margin-left: 10px'><button type='submit' class='btn btn-light'>Home</button></a>";
+                echo "</div>";
+
             }
 
             ?>

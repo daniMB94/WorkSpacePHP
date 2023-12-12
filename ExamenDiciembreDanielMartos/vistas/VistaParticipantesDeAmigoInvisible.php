@@ -21,6 +21,7 @@ class VistaParticipantesDeAmigoInvisible
                     <th>Lugar</th>
                     <th>Observaciones</th>
                     <th>Emoji</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>";
@@ -32,6 +33,8 @@ class VistaParticipantesDeAmigoInvisible
         echo " <td>" . $amigoInvisible->getLugar() . "</td>";
         echo " <td>" . $amigoInvisible->getObservaciones() . "</td>";
         echo " <td>" . $amigoInvisible->getEmoji() . "</td>";
+        echo " <td><a href='index.php?aniadirParticipante&idAmigoInvisible=" . $amigoInvisible->getid() . "'><button
+            class='btn btn-info'>Añadir Participante</button></td>";
         echo "</tr>";
         echo "</tbody>
         </table>";

@@ -7,7 +7,8 @@ use AmigoInvisible\controladores\ControladorAmigoInvisible;
 
 
 session_start();
-//session_destroy();
+//inicializamos $_SESSION["activo"] a false para pintar la pagina de inicio
+$_SESSION["activo"] = false;
 
 //Autocargar clases
 spl_autoload_register(function ($class) {
@@ -44,7 +45,12 @@ if (isset($_REQUEST)) {
             ControladorAmigoInvisible::eliminarAmigoInvisible($idAmigoInvisible);
         }
 
-    } else {
+        if (strcmp($_REQUEST["accion"], "aniadirParticipante") == 0) {
+            $idAmigoInvisible = $_REQUEST["idAmigoInvisible"];
+            ControladorAmigoInvisible::aniadirParticipante($idAmigoInvisible);
+        }
+
+    } else if (!$_SESSION["activo"]) {
         VistaInicio::render();
     }
 }

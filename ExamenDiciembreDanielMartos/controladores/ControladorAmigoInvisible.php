@@ -7,6 +7,7 @@ use AmigoInvisible\vistas\VistaAmigosInvisibles;
 use AmigoInvisible\modelos\ModeloAmigoInvisibleYParticipantes;
 use AmigoInvisible\modelos\ModeloParticipantes;
 use AmigoInvisible\vistas\VistaParticipantesDeAmigoInvisible;
+use AmigoInvisible\vistas\VistaFormNuevoParticipante;
 
 class ControladorAmigoInvisible
 {
@@ -53,6 +54,11 @@ class ControladorAmigoInvisible
         ModeloAmigoInvisible::eliminarAmigoInvisible($idAmigoInvisible);
 
         self::seleccionarTodosLosAmigosInvisibles();
+    }
+
+    public static function aniadirParticipante($idAmigoInvisible)
+    {
+        VistaFormNuevoParticipante::render($idAmigoInvisible);
     }
 }
 
